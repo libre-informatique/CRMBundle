@@ -1,7 +1,7 @@
 <?php
 /*
  * This file is part of the Blast Project package.
- * 
+ *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -19,4 +19,10 @@ $files = array_filter(array(
 ), 'file_exists');
 if ($files) {
     require_once current($files);
+}
+
+
+// try to get outer extension fake file
+if (file_exists($file = __DIR__.'/autoload_outer_extension.php')) {
+    require_once $file;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace {NameSpace}\Tests\Web;
+namespace Librinfo\CRMBundle\Tests\Web;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -13,10 +13,10 @@ class UrlTest extends WebTestCase
     {
         $client = self::createClient();
         $client->request('GET', $url);
-        
+
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
-    
+
     public function urlProvider()
     {
         return array(
@@ -25,11 +25,11 @@ class UrlTest extends WebTestCase
             // Add here page to test ...
         );
     }
-    
+
     public function tryToTest()
     {
         $client = self::createClient();
-        
+
         $crawler = $client->request('GET', '/admin/dashboard');
 
         /* Example */

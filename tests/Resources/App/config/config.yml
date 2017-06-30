@@ -50,3 +50,19 @@ sonata_block:
     # enable the SonataAdminBundle block
     sonata.admin.block.admin_list:
       contexts:   [admin]
+
+# Enable LibrinfoDocrineBundle event listeners
+librinfo_doctrine:
+    orm:
+        default:
+            naming: true
+            guidable: true
+            timestampable: true
+            addressable: true
+            treeable: true
+            nameable: true
+            labelable: true
+            emailable: true
+            descriptible: true
+            searchable: true
+            loggable: true

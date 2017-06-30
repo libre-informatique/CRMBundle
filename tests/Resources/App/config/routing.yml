@@ -1,8 +1,3 @@
-blast_core:
-    resource: "@BlastCoreBundle/Resources/config/routing.yml" 
-    prefix:   /admin
-
-
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
