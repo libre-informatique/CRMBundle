@@ -8,7 +8,9 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Contact;
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Librinfo\CRMBundle\Entity\OuterExtension\HasAddresses;
 
 class ContactTest extends TestCase
 {
@@ -24,7 +26,6 @@ class ContactTest extends TestCase
     protected function setUp()
     {
       $this->object = new Contact;
-
     /*
     * @todo: uncomment this line
     * $this->object = new Contact;
@@ -45,8 +46,9 @@ class ContactTest extends TestCase
      */
     public function testSetFirstname()
     {
-      $test=$this->object->setFirstname('ali');
-      $this->assertNotEquals($test,'ali');
+      $firstname = 'ali';
+      $this->object->setFirstname($firstname);
+      $this->assertEquals($this->object->getFirstname(),$firstname);
     }
 
     /**
@@ -55,9 +57,10 @@ class ContactTest extends TestCase
      */
     public function testGetFirstname()
     {
-      $firstname=$this->object->setFirstname('ali');
+      $firstname='ali';
+      $this->object->setFirstname($firstname);
       $test=$this->object->getFirstname();
-      $this->assertEquals($test,'ali');
+      $this->assertEquals($firstname,$test);
     }
 
     /**
@@ -66,8 +69,10 @@ class ContactTest extends TestCase
      */
     public function testSetShortname()
     {
-      $shortname=$this->object->setShortname('pirlos');
-      $this->assertFalse($shortname==='pirlos');
+      $shortname = 'pirlos';
+      $this->object->setShortname($shortname);
+      $this->assertEquals($this->object->getShortname(),$shortname);
+
 /* @todo : find a good way to check result */
     }
 
@@ -78,9 +83,10 @@ class ContactTest extends TestCase
      */
     public function testGetShortname()
     {
-      $this->object->setShortname('ali');
-      $test = $this->object->getShortname();
-      $this->assertTrue($test==='ali');
+      $shortname='ali';
+      $this->object->setShortname($shortname);
+      $test=$this->object->getShortname();
+      $this->assertEquals($shortname,$test);
     }
 
     /**
@@ -89,9 +95,10 @@ class ContactTest extends TestCase
      */
     public function testSetTitle()
     {
-      $title=$this->object->setTitle('Ambassadeurs');
-      $this->assertFalse($title==='pirlos');
-      $this->assertTrue($title!=='Ambassadeurs');
+      $title = 'Ambassadeurs';
+      $this->object->setTitle($title);
+      $this->assertTrue($this->object->getTitle()===$title);
+
     }
 
     /**
@@ -100,9 +107,11 @@ class ContactTest extends TestCase
      */
     public function testGetTitle()
     {
-      $title=$this->object->setTitle('Ambassadeurs');
-      $test = $this->object->getTitle();
-      $this->assertFalse($test!=='Ambassadeurs');
+      $title='Ambassadeurs';
+      $this->object->setTitle($title);
+      $test=$this->object->getTitle();
+      $this->assertEquals($title,$test);
+
     }
 
     /**
@@ -111,9 +120,10 @@ class ContactTest extends TestCase
      */
     public function testSetFlashOnControl()
     {
-      $flashOnControl=$this->object->setFlashOnControl('cc');
-      $this->assertFalse($flashOnControl==='aa');
-      $this->assertFalse($flashOnControl==='Cc');
+      $flashOnControl = 'AAFF12Q';
+      $this->object->setFlashOnControl($flashOnControl);
+      $this->assertEquals($this->object->getFlashOnControl(),$flashOnControl);
+
     }
 
     /**
@@ -122,9 +132,10 @@ class ContactTest extends TestCase
      */
     public function testGetFlashOnControl()
     {
-      $flashOnControl=$this->object->setFlashOnControl('cc');
-      $test = $this->object->getFlashOnControl();
-      $this->assertFalse($test==='Ambassadeurs');
+      $flashOnControl='Ambassadeurs';
+      $this->object->setFlashOnControl($flashOnControl);
+      $test=$this->object->getFlashOnControl();
+      $this->assertEquals($flashOnControl,$test);
 
     }
 
@@ -134,8 +145,10 @@ class ContactTest extends TestCase
      */
     public function testSetPassword()
     {
-      $password=$this->object->setPassword('secret');
-      $this->assertFalse($password === 'ssecret');
+      $password = 'secret';
+      $this->object->setPassword($password);
+      $this->assertTrue($this->object->getPassword()===$password);
+
     }
 
     /**
@@ -144,10 +157,10 @@ class ContactTest extends TestCase
      */
     public function testGetPassword()
     {
-      $password=$this->object->setPassword('secret');
+      $password='secret';
+      $this->object->setPassword($password);
       $test=$this->object->getPassword();
-      $this->assertTrue($test === 'secret');
-      $this->assertFalse($test === 'ali');
+      $this->assertEquals($password,$test);
     }
 
     /**
@@ -156,8 +169,9 @@ class ContactTest extends TestCase
      */
     public function testSetFamilyContact()
     {
-      $familyContact=$this->object->setFamilyContact('mam');
-      $this->assertFalse($familyContact === 'secret');
+      $familyContact = 'familly';
+      $this->object->setFamilyContact($familyContact);
+      $this->assertEquals($this->object->getFamilyContact(),$familyContact);
     }
 
     /**
@@ -166,9 +180,10 @@ class ContactTest extends TestCase
      */
     public function testGetFamilyContact()
     {
-      $this->object->setFamilyContact('mam');
+      $familyContact = 'familly';
+      $this->object->setFamilyContact($familyContact);
       $test=$this->object->getFamilyContact();
-      $this->assertEquals($test,'mam');
+      $this->assertEquals($familyContact,$test);
     }
 
     /**
@@ -177,8 +192,9 @@ class ContactTest extends TestCase
      */
     public function testSetCulture()
     {
-      $culture=$this->object->setCulture('Culture');
-      $this->assertFalse($culture === 'secret');
+      $culture = 'culture';
+      $this->object->setCulture($culture);
+      $this->assertEquals($this->object->getCulture(),$culture);
     }
 
     /**
@@ -187,11 +203,10 @@ class ContactTest extends TestCase
      */
     public function testGetCulture()
     {
-      $culture=$this->object->setCulture('Culture');
+      $culture = 'culture';
+      $this->object->setCulture($culture);
       $test=$this->object->getCulture();
-      $this->assertTrue($test === 'Culture');
-      $this->assertFalse($test !== 'Culture');
-      $this->assertEquals($test,'Culture');
+      $this->assertTrue($culture===$test);
     }
 
     /**
@@ -200,10 +215,10 @@ class ContactTest extends TestCase
      */
     public function testInitCollections()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->InitCollections();
+      $this->assertInstanceOf(ArrayCollection::class, $this->object->getPhones());
+      $this->assertInstanceOf(ArrayCollection::class, $this->object->getCircles());
+      $this->assertInstanceOf(ArrayCollection::class, $this->object->getPositions());
     }
 
     /**
@@ -212,10 +227,17 @@ class ContactTest extends TestCase
      */
     public function test__clone()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      // init
+      $id = 'id';
+      $this->object->setId($id);
+      // test methods
+      $clone = clone $this->object;
+      $this->assertNull($clone->getId());
+      $this->assertInstanceOf(ArrayCollection::class,$clone->getPositions());
+      $this->assertInstanceOf(ArrayCollection::class,$clone->getCircles());
+      // test object
+      $this->assertEquals($id,$this->object->getId());
+
     }
 
     /**
@@ -261,12 +283,14 @@ class ContactTest extends TestCase
      */
     public function test__toString()
     {
-      $this->object->setFirstname('ali');
-      $this->object->setName('tal');
+      $firstname='firstname';
+      $name='name';
+      $this->object->setFirstname($firstname);
+      $this->object->setName($name);
       $this->object->getFirstname();
       $this->object->getName();
       $test=$this->object->__toString();
-      $this->assertEquals($test,'ali tal');
+      $this->assertEquals($test,'firstname name');
 
     }
 
@@ -276,9 +300,7 @@ class ContactTest extends TestCase
      */
     public function testIsPersonal()
     {
-      $test=$this->object->isPersonal();
-      $this->assertEquals($test,true);
-      $this->assertNotEquals($test,false);
+      $this->assertTrue($this->object->isPersonal()===true);
     }
 
     /**
@@ -287,15 +309,22 @@ class ContactTest extends TestCase
      */
     public function testGetFulltextName()
     {
-      $this->object->setTitle('Ambassadeurs');
+      $title = 'ambassadeurs';
+      $this->object->setTitle($title);
       $this->object->getTitle();
-      $this->object->setFirstname('martiN');
+
+      $firstname='firstname';
+      $this->object->setFirstname($firstname);
       $this->object->getFirstname();
-      $this->object->setName('tal');
+
+      $name='name';
+      $this->object->setName($name);
       $this->object->getName();
+
+
       $test=$this->object->getFulltextName();
-      $this->assertEquals($test,'Ambassadeurs Martin TAL');
-      $this->assertNotEquals($test,'AmbassadeurT Martin TAL');
+      $this->assertEquals($test,'ambassadeurs Firstname NAME');
+
     }
 
     /**
@@ -316,7 +345,12 @@ class ContactTest extends TestCase
      */
     public function testGetId()
     {
-      $this->assertTrue($this->object->getId()===null);
+      $id = 12 ;
+      $this->object->setId($id);
+      $test=$this->object->getId();
+      $this->assertTrue($id===$test);
+
+      //$this->assertTrue($this->object->getId()===null);
 
     }
 
@@ -326,7 +360,9 @@ class ContactTest extends TestCase
      */
     public function testSetId()
     {
-      $this->assertTrue($this->object->setId(45)!==null);
+      $id = 120 ;
+      $this->object->setId($id);
+      $this->assertEquals(120 , $this->object->getId());
     }
 
     /**
@@ -347,9 +383,9 @@ class ContactTest extends TestCase
      */
     public function testSetName()
     {
-      $test=$this->object->setName('ahamada');
-      $this->assertTrue($test!=='ahamada');
-
+      $name = 'name';
+      $this->object->setName($name);
+      $this->assertEquals($name,$this->object->getName());
     }
 
     /**
@@ -358,9 +394,10 @@ class ContactTest extends TestCase
      */
     public function testGetName()
     {
-      $this->object->setName('ahamada');
+      $name='ahamada';
+      $this->object->setName($name);
       $test=$this->object->getName();
-      $this->assertTrue($test==="ahamada");
+      $this->assertEquals("ahamada",$test);
     }
 
     /**
@@ -642,9 +679,8 @@ class ContactTest extends TestCase
      */
     public function testInitAddresses()
     {
-      $test=$this->object->initAddresses();
-      $this->assertFalse(ArrayCollection::class===$test);
-      $this->assertTrue(Collection::class!==$test);
+      $this->object->InitAddresses();
+      $this->assertInstanceOf(ArrayCollection::class, $this->object->getAddresses());
     }
 
     /**
@@ -677,9 +713,6 @@ class ContactTest extends TestCase
      */
     public function testGetAddresses()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+
     }
 }
