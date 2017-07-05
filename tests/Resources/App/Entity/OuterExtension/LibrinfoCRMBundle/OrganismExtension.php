@@ -1,13 +1,15 @@
 <?php
+
 /*
  * This file is part of the Blast Project package.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU GPL v3.
- * For the full copyright and license information, please view the LICENSE
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
 namespace AppBundle\Entity\OuterExtension\LibrinfoCRMBundle;
 
 use Librinfo\EcommerceBundle\Entity\OuterExtension\HasCustomerConstructor;
@@ -18,6 +20,7 @@ use Sylius\Component\Customer\Model\CustomerInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\User\Model\UserInterface;
 use Sylius\Component\User\Model\UserOAuthInterface;
+
 trait OrganismExtension
 {
     use ToggleableTrait, HasCustomerConstructor;
@@ -54,13 +57,13 @@ trait OrganismExtension
      */
     protected $lastLogin;
     /**
-     * Random string sent to the user email address in order to verify it
+     * Random string sent to the user email address in order to verify it.
      *
      * @var string
      */
     protected $emailVerificationToken;
     /**
-     * Random string sent to the user email address in order to verify the password resetting request
+     * Random string sent to the user email address in order to verify the password resetting request.
      *
      * @var string
      */
@@ -86,7 +89,7 @@ trait OrganismExtension
      */
     protected $credentialsExpireAt;
     /**
-     * We need at least one role to be able to authenticate
+     * We need at least one role to be able to authenticate.
      *
      * @var array
      */
@@ -139,7 +142,7 @@ trait OrganismExtension
      * @var ShopUserInterface
      */
     protected $user;
-   /**
+    /**
      * @var AddressInterface
      */
     protected $defaultAddress;
@@ -147,6 +150,7 @@ trait OrganismExtension
      * @var Collection|AddressInterface[]
      */
     protected $addresses;
+
     /**
      * {@inheritdoc}
      */
@@ -154,6 +158,7 @@ trait OrganismExtension
     {
         return $this->username;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -161,6 +166,7 @@ trait OrganismExtension
     {
         $this->username = $username;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -168,6 +174,7 @@ trait OrganismExtension
     {
         return $this->usernameCanonical;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -175,6 +182,7 @@ trait OrganismExtension
     {
         $this->usernameCanonical = $usernameCanonical;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -182,6 +190,7 @@ trait OrganismExtension
     {
         return $this->salt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -189,6 +198,7 @@ trait OrganismExtension
     {
         return $this->plainPassword;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -196,6 +206,7 @@ trait OrganismExtension
     {
         $this->plainPassword = $password;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -203,6 +214,7 @@ trait OrganismExtension
     {
         return $this->password;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -210,6 +222,7 @@ trait OrganismExtension
     {
         $this->password = $password;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -217,6 +230,7 @@ trait OrganismExtension
     {
         return $this->expiresAt;
     }
+
     /**
      * @param \DateTime $date
      */
@@ -224,6 +238,7 @@ trait OrganismExtension
     {
         $this->expiresAt = $date;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -231,6 +246,7 @@ trait OrganismExtension
     {
         return $this->credentialsExpireAt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -238,6 +254,7 @@ trait OrganismExtension
     {
         $this->credentialsExpireAt = $date;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -245,6 +262,7 @@ trait OrganismExtension
     {
         return $this->lastLogin;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -252,6 +270,7 @@ trait OrganismExtension
     {
         $this->lastLogin = $time;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -259,6 +278,7 @@ trait OrganismExtension
     {
         return $this->emailVerificationToken;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -266,6 +286,7 @@ trait OrganismExtension
     {
         $this->emailVerificationToken = $verificationToken;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -273,6 +294,7 @@ trait OrganismExtension
     {
         return $this->passwordResetToken;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -280,6 +302,7 @@ trait OrganismExtension
     {
         $this->passwordResetToken = $passwordResetToken;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -287,6 +310,7 @@ trait OrganismExtension
     {
         return !$this->hasExpired($this->credentialsExpireAt);
     }
+
     /**
      * {@inheritdoc}
      */
@@ -294,6 +318,7 @@ trait OrganismExtension
     {
         return !$this->hasExpired($this->expiresAt);
     }
+
     /**
      * {@inheritdoc}
      */
@@ -301,6 +326,7 @@ trait OrganismExtension
     {
         $this->locked = $locked;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -308,6 +334,7 @@ trait OrganismExtension
     {
         return !$this->locked;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -315,6 +342,7 @@ trait OrganismExtension
     {
         return in_array(strtoupper($role), $this->getRoles(), true);
     }
+
     /**
      * {@inheritdoc}
      */
@@ -325,6 +353,7 @@ trait OrganismExtension
             $this->roles[] = $role;
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -335,6 +364,7 @@ trait OrganismExtension
             $this->roles = array_values($this->roles);
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -342,6 +372,7 @@ trait OrganismExtension
     {
         return $this->roles;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -349,6 +380,7 @@ trait OrganismExtension
     {
         return null !== $this->passwordRequestedAt && new \DateTime() <= $this->passwordRequestedAt->add($ttl);
     }
+
     /**
      * {@inheritdoc}
      */
@@ -356,6 +388,7 @@ trait OrganismExtension
     {
         return $this->passwordRequestedAt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -363,6 +396,7 @@ trait OrganismExtension
     {
         $this->passwordRequestedAt = $date;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -370,6 +404,7 @@ trait OrganismExtension
     {
         return null !== $this->verifiedAt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -377,6 +412,7 @@ trait OrganismExtension
     {
         return $this->verifiedAt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -384,6 +420,7 @@ trait OrganismExtension
     {
         $this->verifiedAt = $verifiedAt;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -391,6 +428,7 @@ trait OrganismExtension
     {
         $this->plainPassword = null;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -398,6 +436,7 @@ trait OrganismExtension
     {
         return $this->oauthAccounts;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -412,8 +451,10 @@ trait OrganismExtension
         if ($filtered->isEmpty()) {
             return null;
         }
+
         return $filtered->current();
     }
+
     /**
      * {@inheritdoc}
      */
@@ -424,6 +465,7 @@ trait OrganismExtension
             $oauth->setUser($this);
         }
     }
+
     /**
      * The serialized data have to contain the fields used by the equals method and the username.
      *
@@ -441,6 +483,7 @@ trait OrganismExtension
             $this->id,
         ]);
     }
+
     /**
      * @param string $serialized
      */
@@ -460,6 +503,7 @@ trait OrganismExtension
             $this->id
         ) = $data;
     }
+
     /**
      * @param \DateTime $date
      *
@@ -469,6 +513,7 @@ trait OrganismExtension
     {
         return null !== $date && new \DateTime() >= $date;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -476,6 +521,7 @@ trait OrganismExtension
     {
         return $this->customer;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -486,6 +532,7 @@ trait OrganismExtension
             $this->assignUser($customer);
         }
     }
+
     /**
      * @param CustomerInterface $customer
      */
@@ -495,6 +542,7 @@ trait OrganismExtension
             $customer->setUser($this);
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -502,6 +550,7 @@ trait OrganismExtension
     {
         return $this->orders;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -509,6 +558,7 @@ trait OrganismExtension
     {
         return $this->user;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -519,6 +569,7 @@ trait OrganismExtension
             $this->assignCustomer($user);
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -526,6 +577,7 @@ trait OrganismExtension
     {
         return null !== $this->user;
     }
+
     /**
      * @param ShopUserInterface|null $user
      */
@@ -535,6 +587,7 @@ trait OrganismExtension
             $user->setCustomer($this);
         }
     }
+
     /**
      * {@inheritdoc}
      */
@@ -542,6 +595,7 @@ trait OrganismExtension
     {
         return $this->emailCanonical;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -549,6 +603,7 @@ trait OrganismExtension
     {
         $this->emailCanonical = $emailCanonical;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -556,6 +611,7 @@ trait OrganismExtension
     {
         return trim(sprintf('%s %s', $this->firstName, $this->lastName));
     }
+
     /**
      * {@inheritdoc}
      */
@@ -563,6 +619,7 @@ trait OrganismExtension
     {
         return $this->firstName;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -570,6 +627,7 @@ trait OrganismExtension
     {
         $this->firstName = $firstName;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -577,6 +635,7 @@ trait OrganismExtension
     {
         return $this->lastName;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -584,6 +643,7 @@ trait OrganismExtension
     {
         $this->lastName = $lastName;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -591,6 +651,7 @@ trait OrganismExtension
     {
         return $this->birthday;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -598,6 +659,7 @@ trait OrganismExtension
     {
         $this->birthday = $birthday;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -605,6 +667,7 @@ trait OrganismExtension
     {
         return $this->gender;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -612,6 +675,7 @@ trait OrganismExtension
     {
         $this->gender = $gender;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -619,6 +683,7 @@ trait OrganismExtension
     {
         return CustomerInterface::MALE_GENDER === $this->gender;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -626,6 +691,7 @@ trait OrganismExtension
     {
         return CustomerInterface::FEMALE_GENDER === $this->gender;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -633,6 +699,7 @@ trait OrganismExtension
     {
         return $this->group;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -640,6 +707,7 @@ trait OrganismExtension
     {
         $this->group = $group;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -647,6 +715,7 @@ trait OrganismExtension
     {
         return $this->phoneNumber;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -654,6 +723,7 @@ trait OrganismExtension
     {
         $this->phoneNumber = $phoneNumber;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -661,6 +731,7 @@ trait OrganismExtension
     {
         return $this->subscribedToNewsletter;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -668,6 +739,7 @@ trait OrganismExtension
     {
         $this->subscribedToNewsletter = $subscribedToNewsletter;
     }
+
     public function updateName()
     {
         $firstname = mb_convert_case($this->getFirstName(), MB_CASE_TITLE);
@@ -678,6 +750,7 @@ trait OrganismExtension
             $name
         ));
     }
+
     /**
      * @return AddressInterface
      */
@@ -685,57 +758,69 @@ trait OrganismExtension
     {
         return $this->defaultAddress;
     }
+
     /**
      * @param AddressInterface $defaultAddress
+     *
      * @return self
      */
     public function setDefaultAddress(AddressInterface $defaultAddress = null)
     {
         $this->defaultAddress = $defaultAddress;
-        if (null !== $defaultAddress)
+        if (null !== $defaultAddress) {
             $this->addAddress($defaultAddress);
+        }
+
         return $this;
     }
+
     /**
      * @param AddressInterface $address
+     *
      * @return self
      */
     public function addAddress(AddressInterface $address)
     {
-        if (!$this->hasAddress($address))
-        {
+        if (!$this->hasAddress($address)) {
             $this->addresses->add($address);
             $address->setCustomer($this);
-            if(!$this->getDefaultAddress())
+            if (!$this->getDefaultAddress()) {
                 $this->setDefaultAddress($address);
+            }
         }
+
         return $this;
     }
+
     /**
      * @param AddressInterface $address
+     *
      * @return self
      */
     public function removeAddress(AddressInterface $address)
     {
         $this->addresses->removeElement($address);
-        if( $address->getId() == $this->defaultAddress->getId())
-        {
-            if( $this->addresses->count() > 0 )
+        if ($address->getId() == $this->defaultAddress->getId()) {
+            if ($this->addresses->count() > 0) {
                 $this->defaultAddress = $this->addresses[0];
-            else
+            } else {
                 $this->defaultAddress = null;
+            }
         }
+
         return $this;
     }
+
     /**
-     *
      * @param AddressInterface $address
-     * @return boolean
+     *
+     * @return bool
      */
     public function hasAddress(AddressInterface $address)
     {
         return $this->addresses->contains($address);
     }
+
     /**
      * @return Collection|AddressInterface[]
      */
