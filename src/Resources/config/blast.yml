@@ -20,7 +20,8 @@ parameters:
                 add:
                     form_tab_general:
                         '':
-                            name: ~
+                            name:
+                                required: true
                             treeParent:
                                 type: Blast\BaseEntitiesBundle\Form\Type\NestedTreeableType
                                 class: Librinfo\CRMBundle\Entity\Category
@@ -160,7 +161,6 @@ parameters:
                                 type: Blast\UtilsBundle\Form\Type\CustomChoiceType
                                 blast_choices: ['Mr', 'Mrs']
                                 choices_field: organism.title
-                                mapped: false
                                 required: false
                             firstname:
                                 type: text
@@ -233,42 +233,34 @@ parameters:
                                 disabled: true
                                 label: false
                                 required: false
-                                help: >
-                                    <a href="#" data-gototab="form_tab_address_book" class="btn btn-success btn-sm sonata-ba-action">
-                                        <i class="fa fa-edit"></i>&nbsp;
-                                        Modifier
-                                    </a>
+                                help: librinfo.btn.edit_address_or_phone
                         form_group_default_phone:
                             defaultPhone:
                                 type: text
                                 disabled: true
                                 label: false
                                 required: false
-                                help: >
-                                    <a href="#" data-gototab="form_tab_phones" class="btn btn-success btn-sm sonata-ba-action">
-                                        <i class="fa fa-edit"></i>&nbsp;
-                                        Modifier
-                                    </a>
+                                help: librinfo.btn.edit_address_or_phone
                         form_group_info:
+                            catalogue_sent:
+                                type: checkbox
+                                required: false
                             source:
                                 type: Blast\UtilsBundle\Form\Type\CustomChoiceType
                                 choices_field: organism.source
                                 blast_choices: [Catalogue, Foire, Ami, Internet, Magazine]
                                 required: false
                                 attr:
-                                    class: new-line
-                                    width: 30
-                            catalogue_sent:
-                                type: checkbox
-                                required: false
+                                    class: inline-block
+                                    width: 45
                             catalogue_send_mean:
                                 type: Blast\UtilsBundle\Form\Type\CustomChoiceType
                                 choices_field: organism.catalogue_send_mean
                                 blast_choices: [Courrier, Email]
                                 required: false
                                 attr:
-                                    class: new-line
-                                    width: 30
+                                    class: inline-block
+                                    width: 45
                             first_catalogue_sent_date:
                                 type: sonata_type_date_picker
                                 required: false
@@ -583,7 +575,8 @@ parameters:
                 add:
                     form_tab_general:
                         '':
-                            name: ~
+                            name:
+                                required: true
                             code: ~
                             description: ~
 #                            owner:
@@ -784,6 +777,14 @@ parameters:
         Librinfo\CRMBundle\Entity\PositionType:
             Sonata\AdminBundle\Show\ShowMapper:
                 _copy: Sonata\AdminBundle\Form\FormMapper
+            Sonata\AdminBundle\Form\FormMapper:
+                remove:
+                    name: ~
+                add:
+                    form_tab_general:
+                        '':
+                            name:
+                                required: true
 
 #################
 # PHONE_TYPE
@@ -792,6 +793,14 @@ parameters:
         Librinfo\CRMBundle\Entity\PhoneType:
             Sonata\AdminBundle\Show\ShowMapper:
                 _copy: Sonata\AdminBundle\Form\FormMapper
+            Sonata\AdminBundle\Form\FormMapper:
+                remove:
+                    label: ~
+                add:
+                    form_tab_general:
+                        '':
+                            label:
+                                required: true
             Sonata\AdminBundle\Datagrid\ListMapper:
                 add:
                     label:
@@ -823,13 +832,13 @@ parameters:
                                 required: false
                             zip:
                                 type: Librinfo\CRMBundle\Form\Type\ZipCityType
-                                required: false
+                                required: true
                             city:
                                 type: Librinfo\CRMBundle\Form\Type\ZipCityType
-                                required: false
+                                required: true
                             country:
                                 type: country
-                                required: false
+                                required: true
                             npai: ~
                     form_group_specifics:
                         form_group_communication:
@@ -909,15 +918,19 @@ parameters:
                             firstName: ~
                             lastName:
                                 type: text
+                                required: true
                             street: ~
                             city:
                                 type: Librinfo\CRMBundle\Form\Type\ZipCityType
                                 zip_field: postCode
+                                required: true
                             postCode:
                                 type: Librinfo\CRMBundle\Form\Type\ZipCityType
                                 zip_field: postCode
+                                required: true
                             countryCode:
                                 type: country
+                                required: true
                             npai: ~
 
             # LIST
