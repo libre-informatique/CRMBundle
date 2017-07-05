@@ -9,7 +9,6 @@ namespace Librinfo\CRMBundle\Admin\Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Admin\CustomerAdmin;
 
-
 class CustomerAdminTest extends TestCase
 {
     /**
@@ -23,7 +22,8 @@ class CustomerAdminTest extends TestCase
      */
     protected function setUp()
     {
-    /*
+
+        /*
     * @todo: uncomment this line
     * $this->object = new CustomerAdmin;
     */

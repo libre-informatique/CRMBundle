@@ -10,9 +10,6 @@
  */
 namespace AppBundle\Entity\OuterExtension\LibrinfoCRMBundle;
 
-//use Sylius\Component\Core\Model\CustomerInterface;
-
-interface OrganismExtensionInterface // extends CustomerInterface
+interface OrganismExtensionInterface 
 {
-
 }

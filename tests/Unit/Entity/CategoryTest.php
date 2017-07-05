@@ -23,7 +23,8 @@ class CategoryTest extends TestCase
      */
     protected function setUp()
     {
-    /*
+
+         /*
     * @todo: uncomment this line
     * $this->object = new Category;
     */

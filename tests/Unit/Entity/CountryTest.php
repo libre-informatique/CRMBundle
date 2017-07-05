@@ -23,7 +23,8 @@ class CountryTest extends TestCase
      */
     protected function setUp()
     {
-      $this->object = new Country;
+
+       $this->object = new Country;
     /*
     * @todo: uncomment this line
     * $this->object = new Country;
@@ -44,9 +45,10 @@ class CountryTest extends TestCase
      */
     public function testSetCode()
     {
-      $this->assertNotEquals($this->object->setCode(12),12);
-      $this->assertNotEquals($this->object->setCode(' '),' ');
-      $this->assertTrue($this->object->setCode(' ')!==' ');
+
+       $test = 'ABG';
+       $this->object->setCode($test);
+       $this->assertEquals($test,$this->object->getCode());
     }
 
     /**
@@ -55,10 +57,10 @@ class CountryTest extends TestCase
      */
     public function testGetCode()
     {
-      $test=$this->object->getCode();
-      $this->assertEquals($test,'');
-      $this->object->setCode("45");
-      $this->assertEquals($this->object->getCode(),"45");
+       $code = 'ABG';
+       $this->object->setCode($code);
+       $test=$this->object->getCode();
+       $this->assertTrue($test==='ABG' );
     }
 
     /**
@@ -67,8 +69,9 @@ class CountryTest extends TestCase
      */
     public function testSetEnabled()
     {
-      $this->assertTrue($this->object->setEnabled(true)!==true);
-      $this->assertFalse($this->object->setEnabled('1')==='');
+       $test = true ;
+       $this->object->setEnabled($test);
+       $this->assertTrue($test===$this->object->getEnabled());
     }
 
     /**
@@ -77,10 +80,10 @@ class CountryTest extends TestCase
      */
     public function testGetEnabled()
     {
-      $this->object->setEnabled('4');
-      $test=$this->object->getEnabled();
-      $this->assertEquals($test,'4');
-
+       $enabled = true;
+       $this->object->setEnabled($enabled);
+       $test=$this->object->getEnabled();
+       $this->assertTrue($test===$enabled);
     }
 
     /**
@@ -89,10 +92,10 @@ class CountryTest extends TestCase
      */
     public function testEnable()
     {
-      $this->assertNotEquals($this->object->enable(),false);
-      $this->assertFalse($this->object->enable()===false);
-      $test=$this->object->enable();
-      $this->assertFalse($test===true);
+      // Remove the following lines when you implement this test.
+      $this->markTestIncomplete(
+          'This test has not been implemented yet.'
+      );
     }
 
     /**
@@ -101,10 +104,10 @@ class CountryTest extends TestCase
      */
     public function testDisable()
     {
-      $this->assertNotEquals($this->object->disable(),false);
-      $this->assertFalse($this->object->disable()===false);
-      $test=$this->object->disable();
-      $this->assertFalse($test===true);
+      // Remove the following lines when you implement this test.
+      $this->markTestIncomplete(
+          'This test has not been implemented yet.'
+      );
     }
 
     /**
@@ -113,6 +116,7 @@ class CountryTest extends TestCase
      */
     public function testAddProvince()
     {
+
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
@@ -173,10 +177,10 @@ class CountryTest extends TestCase
      */
     public function testGetId()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $id = 12 ;
+        $this->object->setId($id);
+        $test=$this->object->getId();
+        $this->assertTrue($id===$test);
     }
 
     /**
@@ -185,10 +189,9 @@ class CountryTest extends TestCase
      */
     public function testSetId()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+       $id = 120 ;
+       $this->object->setId($id);
+       $this->assertEquals(120 , $this->object->getId());
     }
 
     /**
@@ -197,10 +200,13 @@ class CountryTest extends TestCase
      */
     public function testIsNew()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+
+       $id = "AD12";
+       $this->object->setId($id);
+       $this->object->getId();
+       $test = $this->object->isNew();
+       $this->assertEquals($test ,false);
+       $this->assertNotEquals($test ,true);
     }
 
     /**
@@ -209,9 +215,9 @@ class CountryTest extends TestCase
      */
     public function test__toString()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+       $id = "45H";
+       $this->object->setId($id);
+       $test= $this->object->__toString();
+       $this->assertEquals($test,"45H");
     }
 }
