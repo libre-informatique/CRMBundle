@@ -1,20 +1,22 @@
 <?php
+
 /*
  * This file is part of the Blast Project package.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU GPL v3.
- * For the full copyright and license information, please view the LICENSE
+ * This file is licenced under the GNU LGPL v3.
+ * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
+
 namespace AppBundle\Entity\OuterExtension\LibrinfoCRMBundle;
+
 use Sylius\Component\Customer\Model\CustomerInterface;
+
 trait AddressExtension
 {
-
-
-      /**
+    /**
        * @var string
        */
       protected $phoneNumber;
@@ -26,6 +28,7 @@ trait AddressExtension
        * @var CustomerInterface
        */
       protected $customer;
+
       /**
        * {@inheritdoc}
        */
@@ -33,6 +36,7 @@ trait AddressExtension
       {
           return $this->customer;
       }
+
       /**
        * {@inheritdoc}
        */
@@ -40,6 +44,7 @@ trait AddressExtension
       {
           $this->customer = $customer;
       }
+
       /**
        * {@inheritdoc}
        */
@@ -47,6 +52,7 @@ trait AddressExtension
       {
           return $this->phoneNumber;
       }
+
       /**
        * {@inheritdoc}
        */
@@ -54,6 +60,7 @@ trait AddressExtension
       {
           $this->phoneNumber = $phoneNumber;
       }
+
       /**
        * {@inheritdoc}
        */
@@ -61,6 +68,7 @@ trait AddressExtension
       {
           return $this->company;
       }
+
       /**
        * {@inheritdoc}
        */
@@ -68,6 +76,7 @@ trait AddressExtension
       {
           $this->company = $company;
       }
+
       /**
        * @return string
        */

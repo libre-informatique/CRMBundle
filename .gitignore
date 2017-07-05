@@ -1,4 +1,4 @@
-/nbproject
+/.php_cs.cache
 /phpunit-skeleton-generator.sh
 /composer.phar
 /composer.lock
