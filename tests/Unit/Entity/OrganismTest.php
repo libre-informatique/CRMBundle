@@ -57,7 +57,7 @@ class OrganismTest extends TestCase
     {
         $this->object->InitOrganism();
         $test = $this->object->getActive();
-        $this->assertTrue($test === true);
+        $this->assertTrue($test);
         $this->assertInstanceOf(ArrayCollection::class, $this->object->getCircles());
         $this->assertInstanceOf(ArrayCollection::class, $this->object->getPositions());
         $this->assertInstanceOf(ArrayCollection::class, $this->object->getPhones());
@@ -79,6 +79,7 @@ class OrganismTest extends TestCase
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
        //test object
        $this->assertEquals($id, $this->object->getId());
+
     }
 
     /**
@@ -88,17 +89,13 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
-        // Remove the following lines when you implement this test.
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
-      /*$firstname='firstname';
+      $firstname='firstname';
       $name='name';
       $this->object->setFirstname($firstname);
       $this->object->setName($name);
       $this->object->getFirstname();
       $this->object->getName();
-      $this->assertEquals($this->object->__toString(),'firstname name');*/
+      $this->assertEquals($this->object->__toString(),'Firstname NAME');
     }
 
     /**
@@ -108,10 +105,9 @@ class OrganismTest extends TestCase
      */
     public function testSetFirstname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->setFirstname('firstname');
+      $this->assertEquals('Firstname',$this->object->getFirstname());
+
     }
 
     /**
@@ -121,10 +117,11 @@ class OrganismTest extends TestCase
      */
     public function testGetFirstname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertEquals($this->object->getFirstname(),'');
+
+      $this->object->setFirstname('FIRSTNAME');
+      $this->assertTrue($this->object->getFirstname()==='Firstname');
+
     }
 
     /**
@@ -134,10 +131,9 @@ class OrganismTest extends TestCase
      */
     public function testSetLastname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $lastname = 'lastname';
+      $this->object->setLastname($lastname);
+      $this->assertTrue($this->object->getLastname()==='LASTNAME');
     }
 
     /**
@@ -147,10 +143,8 @@ class OrganismTest extends TestCase
      */
     public function testGetLastname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->setLastname('lastname');
+      $this->assertTrue($this->object->getLastname()==='LASTNAME');
     }
 
     /**
@@ -160,10 +154,12 @@ class OrganismTest extends TestCase
      */
     public function testSetShortname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $shortname = 'shortname';
+      $this->object->setShortname($shortname);
+      $this->assertTrue($this->object->getShortname()==='shortname');
+
+      $this->object->setShortname('SHORTname');
+      $this->assertContains($this->object->getShortname(),'SHORTname');
     }
 
     /**
@@ -173,10 +169,8 @@ class OrganismTest extends TestCase
      */
     public function testGetShortname()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->setShortname('Shortname');
+      $this->assertTrue($this->object->getShortname()==='Shortname');
     }
 
     /**
@@ -186,10 +180,9 @@ class OrganismTest extends TestCase
      */
     public function testSetTitle()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $title = 'Ambassadeurs';
+      $this->object->setTitle($title);
+      $this->assertContains($this->object->getTitle(),'Ambassadeurs');
     }
 
     /**
@@ -199,10 +192,8 @@ class OrganismTest extends TestCase
      */
     public function testGetTitle()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->setTitle('Title');
+      $this->assertTrue($this->object->getTitle()==='Title');
     }
 
     /**
@@ -264,10 +255,9 @@ class OrganismTest extends TestCase
      */
     public function testSetCulture()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $culture = 'culture';
+      $this->object->setCulture($culture);
+      $this->assertTrue($this->object->getCulture()=== 'culture');
     }
 
     /**
@@ -277,10 +267,9 @@ class OrganismTest extends TestCase
      */
     public function testGetCulture()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->object->setCulture('culture');
+      $this->assertInternalType('string',$this->object->getCulture());
+      $this->assertSame('culture',$this->object->getCulture());
     }
 
     /**
@@ -367,10 +356,7 @@ class OrganismTest extends TestCase
      */
     public function testSetCategory()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertNull($this->object->getCategory());
     }
 
     /**
@@ -380,10 +366,7 @@ class OrganismTest extends TestCase
      */
     public function testGetCategory()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertNull($this->object->getCategory());
     }
 
     /**
@@ -393,10 +376,7 @@ class OrganismTest extends TestCase
      */
     public function testSetIsIndividual()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertFalse($this->object->getIsIndividual());
     }
 
     /**
@@ -406,10 +386,9 @@ class OrganismTest extends TestCase
      */
     public function testGetIsIndividual()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $isIndividual = true ;
+      $this->object->setIsIndividual($isIndividual);
+      $this->assertTrue($this->object->getIsIndividual());
     }
 
     /**
@@ -419,10 +398,7 @@ class OrganismTest extends TestCase
      */
     public function testSetIsCustomer()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertFalse($this->object->getIsCustomer());
     }
 
     /**
@@ -497,10 +473,7 @@ class OrganismTest extends TestCase
      */
     public function testSetIsSupplier()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertFalse($this->object->getIsSupplier());
     }
 
     /**
@@ -614,10 +587,7 @@ class OrganismTest extends TestCase
      */
     public function testSetVatVerified()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertTrue($this->object->getVatVerified()===0);
     }
 
     /**
@@ -627,10 +597,7 @@ class OrganismTest extends TestCase
      */
     public function testGetVatVerified()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+      $this->assertInternalType('int',$this->object->getVatVerified());
     }
 
     /**
@@ -835,6 +802,7 @@ class OrganismTest extends TestCase
      */
     public function testSetDefaultPhone()
     {
+
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
@@ -978,7 +946,8 @@ class OrganismTest extends TestCase
      */
     public function testIsPersonal()
     {
-        $this->assertTrue($this->object->isPersonal() === false);
+        $this->assertFalse($this->object->isPersonal());
+
     }
 
     /**
@@ -988,6 +957,8 @@ class OrganismTest extends TestCase
      */
     public function testGetFulltextName()
     {
+
+
         // Remove the following lines when you implement this test.
       $this->markTestIncomplete(
           'This test has not been implemented yet.'
