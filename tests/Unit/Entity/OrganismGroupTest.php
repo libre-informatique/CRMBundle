@@ -18,6 +18,7 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\OrganismGroup;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class OrganismGroupTest extends TestCase
 {
@@ -32,10 +33,7 @@ class OrganismGroupTest extends TestCase
      */
     protected function setUp()
     {
-        /*
-    * @todo: uncomment this line
-    * $this->object = new OrganismGroup;
-    */
+        $this->object = new OrganismGroup();
     }
 
     /**
@@ -48,183 +46,42 @@ class OrganismGroupTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getContact
-     *
-     * @todo   Implement testGetContact().
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setContact
      */
     public function testGetContact()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setContact
-     *
-     * @todo   Implement testSetContact().
-     */
-    public function testSetContact()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $contact = 'contact';
+        $this->object->setContact($contact);
+        $this->assertContains($contact, $this->object->getContact());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getOrganism
-     *
-     * @todo   Implement testGetOrganism().
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setOrganism
      */
     public function testGetOrganism()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setOrganism
-     *
-     * @todo   Implement testSetOrganism().
-     */
-    public function testSetOrganism()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $organism = 'organism';
+        $this->object->setOrganism($organism);
+        $this->assertEquals($organism, $this->object->getOrganism());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getRoles
-     *
-     * @todo   Implement testGetRoles().
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setRoles
      */
     public function testGetRoles()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setRoles
-     *
-     * @todo   Implement testSetRoles().
-     */
-    public function testSetRoles()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::addRole
-     *
-     * @todo   Implement testAddRole().
-     */
-    public function testAddRole()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::removeRole
-     *
-     * @todo   Implement testRemoveRole().
-     */
-    public function testRemoveRole()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $roles = new ArrayCollection();
+        $this->object->setRoles($roles);
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getRoles());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::__toString
-     *
-     * @todo   Implement test__toString().
      */
     public function test__toString()
     {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getId
-     *
-     * @todo   Implement testGetId().
-     */
-    public function testGetId()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setId
-     *
-     * @todo   Implement testSetId().
-     */
-    public function testSetId()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::isNew
-     *
-     * @todo   Implement testIsNew().
-     */
-    public function testIsNew()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setName
-     *
-     * @todo   Implement testSetName().
-     */
-    public function testSetName()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getName
-     *
-     * @todo   Implement testGetName().
-     */
-    public function testGetName()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertNull($this->object->__toString());
     }
 }

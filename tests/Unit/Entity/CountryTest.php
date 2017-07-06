@@ -33,10 +33,6 @@ class CountryTest extends TestCase
     protected function setUp()
     {
         $this->object = new Country();
-    /*
-    * @todo: uncomment this line
-    * $this->object = new Country;
-    */
     }
 
     /**
@@ -50,8 +46,6 @@ class CountryTest extends TestCase
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::setCode
      * @covers \Librinfo\CRMBundle\Entity\Country::getCode
-     *
-     * @todo   Implement testSetCode().
      */
     public function testSetCode()
     {
@@ -63,8 +57,6 @@ class CountryTest extends TestCase
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::setEnabled
      * @covers \Librinfo\CRMBundle\Entity\Country::getEnabled
-     *
-     * @todo   Implement testSetEnabled().
      */
     public function testSetEnabled()
     {
@@ -72,101 +64,8 @@ class CountryTest extends TestCase
     }
 
     /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::enable
-     *
-     * @todo   Implement testEnable().
-     */
-    public function testEnable()
-    {
-        // Remove the following lines when you implement this test.
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::disable
-     *
-     * @todo   Implement testDisable().
-     */
-    public function testDisable()
-    {
-        // Remove the following lines when you implement this test.
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::addProvince
-     *
-     * @todo   Implement testAddProvince().
-     */
-    public function testAddProvince()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::removeProvince
-     *
-     * @todo   Implement testRemoveProvince().
-     */
-    public function testRemoveProvince()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::getProvinces
-     *
-     * @todo   Implement testGetProvinces().
-     */
-    public function testGetProvinces()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::hasProvinces
-     *
-     * @todo   Implement testHasProvinces().
-     */
-    public function testHasProvinces()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::hasProvince
-     *
-     * @todo   Implement testHasProvince().
-     */
-    public function testHasProvince()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * @covers \Librinfo\CRMBundle\Entity\Country::getId
      * @covers \Librinfo\CRMBundle\Entity\Country::setId
-     *
-     * @todo   Implement testGetId().
      */
     public function testGetId()
     {
@@ -177,8 +76,6 @@ class CountryTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::isNew
-     *
-     * @todo   Implement testIsNew().
      */
     public function testIsNew()
     {
@@ -190,8 +87,6 @@ class CountryTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::__toString
-     *
-     * @todo   Implement test__toString().
      */
     public function test__toString()
     {
