@@ -1,0 +1,14 @@
+{% spaceless %}
+    <div class="mainPhoneContainer">
+        <blockquote>
+            {% if data %}
+                {{ data.phoneType }}: {{ data.number }}
+            {% endif %}
+        </blockquote>
+
+        <a href="#" data-gototab="form_tab_contactInformations" class="btn btn-success btn-sm sonata-ba-action">
+            <i class="fa fa-edit"></i>&nbsp;
+            Gérer
+        </a>
+    </div>
+{% endspaceless %}

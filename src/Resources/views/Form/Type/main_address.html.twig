@@ -1,0 +1,18 @@
+{% spaceless %}
+    <div class="mainAddressContainer">
+        <blockquote>
+            {% if data %}
+                <address>
+                    <strong>{{ data.firstName }} {{ data.lastName }}</strong><br>
+                    {{ data.street }}<br>
+                    {{ data.postCode }} {{ data.city }} ({{ data.countryCode }})
+                </address>
+            {% endif %}
+        </blockquote>
+
+        <a href="#" data-gototab="form_tab_contactInformations" class="btn btn-success btn-sm sonata-ba-action">
+            <i class="fa fa-edit"></i>&nbsp;
+            Gérer
+        </a>
+    </div>
+{% endspaceless %}
