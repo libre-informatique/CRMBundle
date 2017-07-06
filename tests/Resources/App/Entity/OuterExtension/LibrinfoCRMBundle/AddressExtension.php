@@ -12,9 +12,6 @@
 
 namespace AppBundle\Entity\OuterExtension\LibrinfoCRMBundle;
 
-use Sylius\Component\Customer\Model\CustomerInterface;
-
 trait AddressExtension
 {
-  
 }

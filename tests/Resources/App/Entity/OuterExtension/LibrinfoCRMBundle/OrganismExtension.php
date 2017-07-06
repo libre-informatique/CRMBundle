@@ -12,16 +12,6 @@
 
 namespace AppBundle\Entity\OuterExtension\LibrinfoCRMBundle;
 
-use Librinfo\EcommerceBundle\Entity\OuterExtension\HasCustomerConstructor;
-use Sylius\Component\Core\Model\AddressInterface;
-use Sylius\Component\Core\Model\ShopUserInterface;
-use Sylius\Component\Customer\Model\CustomerGroupInterface;
-use Sylius\Component\Customer\Model\CustomerInterface;
-use Sylius\Component\Resource\Model\ToggleableTrait;
-use Sylius\Component\User\Model\UserInterface;
-use Sylius\Component\User\Model\UserOAuthInterface;
-
 trait OrganismExtension
 {
-
 }
