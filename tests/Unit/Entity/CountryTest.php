@@ -49,6 +49,7 @@ class CountryTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::setCode
+     * @covers \Librinfo\CRMBundle\Entity\Country::getCode
      *
      * @todo   Implement testSetCode().
      */
@@ -56,45 +57,18 @@ class CountryTest extends TestCase
     {
         $test = 'ABG';
         $this->object->setCode($test);
-        $this->assertEquals($test, $this->object->getCode());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::getCode
-     *
-     * @todo   Implement testGetCode().
-     */
-    public function testGetCode()
-    {
-        $code = 'ABG';
-        $this->object->setCode($code);
-        $test = $this->object->getCode();
-        $this->assertTrue($test === 'ABG');
+        $this->assertEquals('ABG', $this->object->getCode());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::setEnabled
+     * @covers \Librinfo\CRMBundle\Entity\Country::getEnabled
      *
      * @todo   Implement testSetEnabled().
      */
     public function testSetEnabled()
     {
-        $test = true;
-        $this->object->setEnabled($test);
-        $this->assertTrue($test === $this->object->getEnabled());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::getEnabled
-     *
-     * @todo   Implement testGetEnabled().
-     */
-    public function testGetEnabled()
-    {
-        $enabled = true;
-        $this->object->setEnabled($enabled);
-        $test = $this->object->getEnabled();
-        $this->assertTrue($test === $enabled);
+        $this->assertNull($this->object->getEnabled());
     }
 
     /**
@@ -190,6 +164,7 @@ class CountryTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Country::getId
+     * @covers \Librinfo\CRMBundle\Entity\Country::setId
      *
      * @todo   Implement testGetId().
      */
@@ -197,20 +172,7 @@ class CountryTest extends TestCase
     {
         $id = 12;
         $this->object->setId($id);
-        $test = $this->object->getId();
-        $this->assertTrue($id === $test);
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::setId
-     *
-     * @todo   Implement testSetId().
-     */
-    public function testSetId()
-    {
-        $id = 120;
-        $this->object->setId($id);
-        $this->assertEquals(120, $this->object->getId());
+        $this->assertEquals(12, $this->object->getId());
     }
 
     /**
@@ -223,9 +185,7 @@ class CountryTest extends TestCase
         $id = 'AD12';
         $this->object->setId($id);
         $this->object->getId();
-        $test = $this->object->isNew();
-        $this->assertEquals($test, false);
-        $this->assertNotEquals($test, true);
+        $this->assertFalse($this->object->isNew());
     }
 
     /**
@@ -235,9 +195,6 @@ class CountryTest extends TestCase
      */
     public function test__toString()
     {
-        $id = '45H';
-        $this->object->setId($id);
-        $test = $this->object->__toString();
-        $this->assertEquals($test, '45H');
+        $this->assertInternalType('string', $this->object->__toString());
     }
 }

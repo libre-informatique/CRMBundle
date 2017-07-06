@@ -79,7 +79,6 @@ class OrganismTest extends TestCase
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
        //test object
        $this->assertEquals($id, $this->object->getId());
-
     }
 
     /**
@@ -89,51 +88,30 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
-      $firstname='firstname';
-      $name='name';
-      $this->object->setFirstname($firstname);
-      $this->object->setName($name);
-      $this->object->getFirstname();
-      $this->object->getName();
-      $this->assertEquals($this->object->__toString(),'Firstname NAME');
+        $firstname = 'firstname';
+        $name = 'name';
+        $this->object->setFirstname($firstname);
+        $this->object->setName($name);
+        $this->object->getFirstname();
+        $this->object->getName();
+        $this->assertEquals('Firstname NAME', $this->object->__toString());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setFirstname
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFirstname
      *
      * @todo   Implement testSetFirstname().
      */
     public function testSetFirstname()
     {
-      $this->object->setFirstname('firstname');
-      $this->assertEquals('Firstname',$this->object->getFirstname());
+        $firstname = 'firstname';
+        $this->object->setFirstname($firstname);
+        $this->assertEquals('Firstname', $this->object->getFirstname());
 
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getFirstname
-     *
-     * @todo   Implement testGetFirstname().
-     */
-    public function testGetFirstname()
-    {
-      $this->assertEquals($this->object->getFirstname(),'');
-
-      $this->object->setFirstname('FIRSTNAME');
-      $this->assertTrue($this->object->getFirstname()==='Firstname');
-
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setLastname
-     *
-     * @todo   Implement testSetLastname().
-     */
-    public function testSetLastname()
-    {
-      $lastname = 'lastname';
-      $this->object->setLastname($lastname);
-      $this->assertTrue($this->object->getLastname()==='LASTNAME');
+        $firstname = 'FIRSTNAME';
+        $this->object->setFirstname($firstname);
+        $this->assertEquals('Firstname', $this->object->getFirstname());
     }
 
     /**
@@ -143,57 +121,39 @@ class OrganismTest extends TestCase
      */
     public function testGetLastname()
     {
-      $this->object->setLastname('lastname');
-      $this->assertTrue($this->object->getLastname()==='LASTNAME');
+        $lastname = 'lastname';
+        $this->object->setLastname($lastname);
+        $this->assertEquals('LASTNAME', $this->object->getLastname());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setShortname
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getShortname
      *
      * @todo   Implement testSetShortname().
      */
     public function testSetShortname()
     {
-      $shortname = 'shortname';
-      $this->object->setShortname($shortname);
-      $this->assertTrue($this->object->getShortname()==='shortname');
+        $shortname = 'shortname';
+        $this->object->setShortname($shortname);
+        $this->assertEquals('shortname', $this->object->getShortname());
 
-      $this->object->setShortname('SHORTname');
-      $this->assertContains($this->object->getShortname(),'SHORTname');
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getShortname
-     *
-     * @todo   Implement testGetShortname().
-     */
-    public function testGetShortname()
-    {
-      $this->object->setShortname('Shortname');
-      $this->assertTrue($this->object->getShortname()==='Shortname');
+        $shortname = 'SHORTname';
+        $this->object->setShortname('SHORTname');
+        $this->assertContains('SHORTname', $this->object->getShortname());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setTitle
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getTitle
      *
      * @todo   Implement testSetTitle().
      */
     public function testSetTitle()
     {
-      $title = 'Ambassadeurs';
-      $this->object->setTitle($title);
-      $this->assertContains($this->object->getTitle(),'Ambassadeurs');
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getTitle
-     *
-     * @todo   Implement testGetTitle().
-     */
-    public function testGetTitle()
-    {
-      $this->object->setTitle('Title');
-      $this->assertTrue($this->object->getTitle()==='Title');
+        $title = 'Ambassadeurs';
+        $this->object->setTitle($title);
+        $this->assertContains('Ambassadeurs', $this->object->getTitle());
     }
 
     /**
@@ -250,26 +210,16 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setCulture
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCulture
      *
      * @todo   Implement testSetCulture().
      */
     public function testSetCulture()
     {
-      $culture = 'culture';
-      $this->object->setCulture($culture);
-      $this->assertTrue($this->object->getCulture()=== 'culture');
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getCulture
-     *
-     * @todo   Implement testGetCulture().
-     */
-    public function testGetCulture()
-    {
-      $this->object->setCulture('culture');
-      $this->assertInternalType('string',$this->object->getCulture());
-      $this->assertSame('culture',$this->object->getCulture());
+        $culture = 'culture';
+        $this->object->setCulture($culture);
+        $this->assertSame('culture', $this->object->getCulture());
+        $this->assertInternalType('string', $this->object->getCulture());
     }
 
     /**
@@ -300,23 +250,11 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::getName
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setName
      *
      * @todo   Implement testGetName().
      */
     public function testGetName()
-    {
-        $name = 'name';
-        $this->object->setName($name);
-        $test = $this->object->getName();
-        $this->assertEquals('NAME', $test);
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setName
-     *
-     * @todo   Implement testSetName().
-     */
-    public function testSetName()
     {
         $name = 'name';
         $this->object->setName($name);
@@ -356,7 +294,7 @@ class OrganismTest extends TestCase
      */
     public function testSetCategory()
     {
-      $this->assertNull($this->object->getCategory());
+        $this->assertNull($this->object->getCategory());
     }
 
     /**
@@ -366,78 +304,32 @@ class OrganismTest extends TestCase
      */
     public function testGetCategory()
     {
-      $this->assertNull($this->object->getCategory());
+        $this->assertNull($this->object->getCategory());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::isIndividual
      *
      * @todo   Implement testSetIsIndividual().
      */
     public function testSetIsIndividual()
     {
-      $this->assertFalse($this->object->getIsIndividual());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
-     *
-     * @todo   Implement testGetIsIndividual().
-     */
-    public function testGetIsIndividual()
-    {
-      $isIndividual = true ;
-      $this->object->setIsIndividual($isIndividual);
-      $this->assertTrue($this->object->getIsIndividual());
+        $this->assertEquals(false, $this->object->getIsIndividual());
+        $this->assertInternalType('bool', $this->object->isIndividual());
+        $this->assertFalse($this->object->isIndividual());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsCustomer
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsCustomer
      *
      * @todo   Implement testSetIsCustomer().
      */
     public function testSetIsCustomer()
     {
-      $this->assertFalse($this->object->getIsCustomer());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsCustomer
-     *
-     * @todo   Implement testGetIsCustomer().
-     */
-    public function testGetIsCustomer()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isIndividual
-     *
-     * @todo   Implement testIsIndividual().
-     */
-    public function testIsIndividual()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isCustomer
-     *
-     * @todo   Implement testIsCustomer().
-     */
-    public function testIsCustomer()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertFalse($this->object->getIsCustomer());
     }
 
     /**
@@ -468,38 +360,15 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsSupplier
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsSupplier
+     * @covers \Librinfo\CRMBundle\Entity\Organism::isSupplier
      *
      * @todo   Implement testSetIsSupplier().
      */
     public function testSetIsSupplier()
     {
-      $this->assertFalse($this->object->getIsSupplier());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getIsSupplier
-     *
-     * @todo   Implement testGetIsSupplier().
-     */
-    public function testGetIsSupplier()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isSupplier
-     *
-     * @todo   Implement testIsSupplier().
-     */
-    public function testIsSupplier()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $this->assertFalse($this->object->getIsSupplier());
+        $this->assertInternalType('bool', $this->object->isSupplier());
     }
 
     /**
@@ -582,22 +451,14 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setVatVerified
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getVatVerified
      *
      * @todo   Implement testSetVatVerified().
      */
     public function testSetVatVerified()
     {
-      $this->assertTrue($this->object->getVatVerified()===0);
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getVatVerified
-     *
-     * @todo   Implement testGetVatVerified().
-     */
-    public function testGetVatVerified()
-    {
-      $this->assertInternalType('int',$this->object->getVatVerified());
+        $this->assertEquals(0, $this->object->getVatVerified());
+        $this->assertInternalType('int', $this->object->getVatVerified());
     }
 
     /**
@@ -802,7 +663,6 @@ class OrganismTest extends TestCase
      */
     public function testSetDefaultPhone()
     {
-
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
@@ -947,7 +807,6 @@ class OrganismTest extends TestCase
     public function testIsPersonal()
     {
         $this->assertFalse($this->object->isPersonal());
-
     }
 
     /**
@@ -957,8 +816,6 @@ class OrganismTest extends TestCase
      */
     public function testGetFulltextName()
     {
-
-
         // Remove the following lines when you implement this test.
       $this->markTestIncomplete(
           'This test has not been implemented yet.'
@@ -967,6 +824,7 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::getId
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setId
      *
      * @todo   Implement testGetId().
      */
@@ -975,19 +833,7 @@ class OrganismTest extends TestCase
         $id = 'id';
         $this->object->setId($id);
         $test = $this->object->getId();
-        $this->assertTrue('id' === $test);
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setId
-     *
-     * @todo   Implement testSetId().
-     */
-    public function testSetId()
-    {
-        $id = 'id';
-        $this->object->setId($id);
-        $this->assertEquals('id', $this->object->getId());
+        $this->assertEquals('id', $test);
     }
 
     /**
@@ -1000,7 +846,7 @@ class OrganismTest extends TestCase
         $id = 'id';
         $this->object->setId($id);
         $this->object->getId();
-        $this->assertEquals($this->object->IsNew(), false);
+        $this->assertFalse($this->object->IsNew());
     }
 
     /**
