@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -55,8 +55,8 @@ class OrganismAdmin extends CoreAdmin
                 $this->renameFormTab('form_tab_individuals', 'form_tab_organizations');
                 $formTabs = $this->getFormTabs();
                 $formTabs['form_tab_organizations']['class'] = $formTabs['form_tab_organizations']['class'] . 'countable-tab count-organizations';
-                $mapper->add('isIndividual_1','hidden',[
-                    'mapped'=>false
+                $mapper->add('isIndividual_1', 'hidden', [
+                    'mapped' => false,
                 ]);
                 $mapper->get('isIndividual_1')->setData('1');
             } else {
@@ -66,11 +66,10 @@ class OrganismAdmin extends CoreAdmin
                 $mapper->remove('organizations');
                 $formTabs = $this->getFormTabs();
                 $formTabs['form_tab_individuals']['class'] = $formTabs['form_tab_individuals']['class'] . 'countable-tab count-individuals';
-                $mapper->add('isIndividual_0','hidden',[
-                    'mapped'=>false
+                $mapper->add('isIndividual_0', 'hidden', [
+                    'mapped' => false,
                 ]);
                 $mapper->get('isIndividual_0')->setData('0');
-
             }
 
             $this->setFormTabs($formTabs);
@@ -175,7 +174,7 @@ class OrganismAdmin extends CoreAdmin
         $registry = $this->getConfigurationPool()->getContainer()->get('blast_core.code_generators');
         $codeGenerator = $registry->getCodeGenerator(Organism::class, 'customerCode');
         if (!empty($code) && !$codeGenerator->validate($code)) {
-            $msg = 'Wrong format for customer code. It shoud be: '.$codeGenerator::getHelp();
+            $msg = 'Wrong format for customer code. It shoud be: ' . $codeGenerator::getHelp();
             $errorElement
                 ->with('customerCode')
                     ->addViolation($msg)
@@ -233,7 +232,7 @@ class OrganismAdmin extends CoreAdmin
         $registry = $this->getConfigurationPool()->getContainer()->get('blast_core.code_generators');
         $codeGenerator = $registry->getCodeGenerator(Organism::class, 'supplierCode');
         if (!empty($code) && !$codeGenerator->validate($code)) {
-            $msg = 'Wrong format for supplier code. It shoud be: '.$codeGenerator::getHelp();
+            $msg = 'Wrong format for supplier code. It shoud be: ' . $codeGenerator::getHelp();
             $errorElement
                 ->with('supplierCode')
                     ->addViolation($msg)
@@ -306,7 +305,7 @@ class OrganismAdmin extends CoreAdmin
             return;
         }
 
-        $search = '%'.$value['value'].'%';
+        $search = '%' . $value['value'] . '%';
         $queryBuilder
             ->andWhere($queryBuilder->expr()->orX(
                 $queryBuilder->expr()->like("$alias.firstname", ':firstname'),
