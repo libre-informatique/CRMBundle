@@ -147,7 +147,7 @@ parameters:
                     form_tab_general:
                         form_group_organism:
                             isIndividual:
-                                only_new: true
+                                # only_new: true
                                 type: choice
                                 choices:
                                     librinfo.label.collective_organism: 0

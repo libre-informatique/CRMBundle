@@ -6,35 +6,33 @@ $(document).ready(function() {
     // ********** Individual / Collective
 
     function toggleIndividual(){
-        var individual = $('#' + prefix + 'isIndividual_1');
+        var individual = $('#' + prefix + 'isIndividual_0', '#' + prefix + 'isIndividual_1');
 
-        if(individual.length) {
-            if( individual.prop('checked') ) {
-                $('#' + prefix + 'title').prop('disabled', false);
-                $('#sonata-ba-field-container-' + prefix + 'title').show();
-                $('#' + prefix + 'firstname').prop('disabled', false);
-                $('#sonata-ba-field-container-' + prefix + 'firstname').show();
-                $('#' + prefix + 'lastname').prop('disabled', false);
-                $('#sonata-ba-field-container-' + prefix + 'lastname').show();
-                $('#sonata-ba-field-container-' + prefix + 'name').hide();
-                $('#' + prefix + 'name').prop('disabled', true);
+        if( individual.is('input[type="radio"]') && individual.prop('checked') || individual.is('input[type="hidden"]') && individual.val() === 1) {
+            $('#' + prefix + 'title').prop('disabled', false);
+            $('#sonata-ba-field-container-' + prefix + 'title').show();
+            $('#' + prefix + 'firstname').prop('disabled', false);
+            $('#sonata-ba-field-container-' + prefix + 'firstname').show();
+            $('#' + prefix + 'lastname').prop('disabled', false);
+            $('#sonata-ba-field-container-' + prefix + 'lastname').show();
+            $('#sonata-ba-field-container-' + prefix + 'name').hide();
+            $('#' + prefix + 'name').prop('disabled', true);
 
-                $('.sonata-ba-field-' + prefix + 'addresses-firstName').show().find('input').prop('disabled', false);
-                $('.sonata-ba-field-' + prefix + 'addresses-lastName').find('label.control-label').html(Translator.trans('librinfo.label.last_name', {}, 'messages'));
-            }
-            else {
-                $('#sonata-ba-field-container-' + prefix + 'title').hide();
-                $('#' + prefix + 'title').prop('disabled', true);
-                $('#sonata-ba-field-container-' + prefix + 'firstname').hide();
-                $('#' + prefix + 'firstname').prop('disabled', true);
-                $('#sonata-ba-field-container-' + prefix + 'lastname').hide();
-                $('#' + prefix + 'lastname').prop('disabled', true);
-                $('#' + prefix + 'name').prop('disabled', false);
-                $('#sonata-ba-field-container-' + prefix + 'name').show();
+            $('.sonata-ba-field-' + prefix + 'addresses-firstName').show().find('input').prop('disabled', false);
+            $('.sonata-ba-field-' + prefix + 'addresses-lastName').find('label.control-label').html(Translator.trans('librinfo.label.last_name', {}, 'messages'));
+        }
+        else {
+            $('#sonata-ba-field-container-' + prefix + 'title').hide();
+            $('#' + prefix + 'title').prop('disabled', true);
+            $('#sonata-ba-field-container-' + prefix + 'firstname').hide();
+            $('#' + prefix + 'firstname').prop('disabled', true);
+            $('#sonata-ba-field-container-' + prefix + 'lastname').hide();
+            $('#' + prefix + 'lastname').prop('disabled', true);
+            $('#' + prefix + 'name').prop('disabled', false);
+            $('#sonata-ba-field-container-' + prefix + 'name').show();
 
-                $('.sonata-ba-field-' + prefix + 'addresses-firstName').hide().find('input').prop('disabled', true);
-                $('.sonata-ba-field-' + prefix + 'addresses-lastName').find('label.control-label').html(Translator.trans('librinfo.label.organism_name', {}, 'messages'));
-            }
+            $('.sonata-ba-field-' + prefix + 'addresses-firstName').hide().find('input').prop('disabled', true);
+            $('.sonata-ba-field-' + prefix + 'addresses-lastName').find('label.control-label').html(Translator.trans('librinfo.label.organism_name', {}, 'messages'));
         }
     }
 

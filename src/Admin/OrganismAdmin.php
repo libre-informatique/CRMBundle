@@ -48,12 +48,17 @@ class OrganismAdmin extends CoreAdmin
         $subject = $this->getSubject();
 
         if ($subject->getId()) {
+            $mapper->remove('isIndividual');
             if ($subject->isIndividual()) {
                 $mapper->remove('name');
                 $mapper->remove('individuals');
                 $this->renameFormTab('form_tab_individuals', 'form_tab_organizations');
                 $formTabs = $this->getFormTabs();
                 $formTabs['form_tab_organizations']['class'] = $formTabs['form_tab_organizations']['class'] . 'countable-tab count-organizations';
+                $mapper->add('isIndividual_1','hidden',[
+                    'mapped'=>false
+                ]);
+                $mapper->get('isIndividual_1')->setData('1');
             } else {
                 $mapper->remove('title');
                 $mapper->remove('firstname');
@@ -61,6 +66,11 @@ class OrganismAdmin extends CoreAdmin
                 $mapper->remove('organizations');
                 $formTabs = $this->getFormTabs();
                 $formTabs['form_tab_individuals']['class'] = $formTabs['form_tab_individuals']['class'] . 'countable-tab count-individuals';
+                $mapper->add('isIndividual_0','hidden',[
+                    'mapped'=>false
+                ]);
+                $mapper->get('isIndividual_0')->setData('0');
+
             }
 
             $this->setFormTabs($formTabs);
