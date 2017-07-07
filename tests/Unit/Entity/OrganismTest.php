@@ -151,30 +151,24 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setCategory
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
      */
     public function testSetCategory()
     {
-        $this->assertNull($this->object->getCategory());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
-     */
-    public function testGetCategory()
-    {
+        $category = null;
+        $this->object->setCategory($category);
         $this->assertNull($this->object->getCategory());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsIndividual
      * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isIndividual
      */
     public function testSetIsIndividual()
     {
+        $isIndividual = false;
+        $this->object->setIsIndividual($isIndividual);
         $this->assertEquals(false, $this->object->getIsIndividual());
-        $this->assertInternalType('bool', $this->object->isIndividual());
-        $this->assertFalse($this->object->isIndividual());
     }
 
     /**
@@ -183,18 +177,20 @@ class OrganismTest extends TestCase
      */
     public function testSetIsCustomer()
     {
+        $isCustomer = false;
+        $this->object->setIsCustomer($isCustomer);
         $this->assertFalse($this->object->getIsCustomer());
     }
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsSupplier
      * @covers \Librinfo\CRMBundle\Entity\Organism::getIsSupplier
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isSupplier
      */
     public function testSetIsSupplier()
     {
-        $this->assertFalse($this->object->getIsSupplier());
-        $this->assertInternalType('bool', $this->object->isSupplier());
+        $isSupplier = true;
+        $this->object->setIsSupplier($isSupplier);
+        $this->assertTrue($this->object->getIsSupplier());
     }
 
     /**
@@ -203,8 +199,9 @@ class OrganismTest extends TestCase
      */
     public function testSetVatVerified()
     {
+        $vatVerified = 0;
+        $this->object->setVatVerified($vatVerified);
         $this->assertEquals(0, $this->object->getVatVerified());
-        $this->assertInternalType('int', $this->object->getVatVerified());
     }
 
     /**
@@ -213,28 +210,5 @@ class OrganismTest extends TestCase
     public function testIsPersonal()
     {
         $this->assertFalse($this->object->isPersonal());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getId
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setId
-     */
-    public function testGetId()
-    {
-        $id = 'id';
-        $this->object->setId($id);
-        $test = $this->object->getId();
-        $this->assertEquals('id', $test);
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::isNew
-     */
-    public function testIsNew()
-    {
-        $id = 'id';
-        $this->object->setId($id);
-        $this->object->getId();
-        $this->assertFalse($this->object->IsNew());
     }
 }

@@ -61,8 +61,10 @@ class OrganismGroupTest extends TestCase
     public function testGetRoles()
     {
         $roles = new ArrayCollection();
+        $role = 'toto';
         $this->object->setRoles($roles);
-        $this->assertInstanceOf(ArrayCollection::class, $this->object->getRoles());
+        $this->object->getRoles()->add($role);
+        $this->assertContains('toto', $this->object->getRoles());
     }
 
     /**
@@ -70,6 +72,9 @@ class OrganismGroupTest extends TestCase
      */
     public function test__toString()
     {
-        $this->assertNull($this->object->__toString());
+        // __toString return $this->getId()
+        $id = 'id';
+        $this->object->setId($id);
+        $this->assertEquals('id', $this->object->__toString());
     }
 }

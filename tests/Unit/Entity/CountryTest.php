@@ -48,36 +48,8 @@ class CountryTest extends TestCase
      */
     public function testSetEnabled()
     {
-        $this->assertNull($this->object->getEnabled());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::getId
-     * @covers \Librinfo\CRMBundle\Entity\Country::setId
-     */
-    public function testGetId()
-    {
-        $id = 12;
-        $this->object->setId($id);
-        $this->assertEquals(12, $this->object->getId());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::isNew
-     */
-    public function testIsNew()
-    {
-        $id = 'AD12';
-        $this->object->setId($id);
-        $this->object->getId();
-        $this->assertFalse($this->object->isNew());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\Country::__toString
-     */
-    public function test__toString()
-    {
-        $this->assertInternalType('string', $this->object->__toString());
+        $enabled = true;
+        $this->object->setEnabled($enabled);
+        $this->assertEquals(true, $this->object->getEnabled());
     }
 }
