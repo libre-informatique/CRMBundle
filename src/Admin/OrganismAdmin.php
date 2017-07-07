@@ -52,12 +52,18 @@ class OrganismAdmin extends CoreAdmin
                 $mapper->remove('name');
                 $mapper->remove('individuals');
                 $this->renameFormTab('form_tab_individuals', 'form_tab_organizations');
+                $formTabs = $this->getFormTabs();
+                $formTabs['form_tab_organizations']['class'] = $formTabs['form_tab_organizations']['class'] . 'countable-tab count-organizations';
             } else {
                 $mapper->remove('title');
                 $mapper->remove('firstname');
                 $mapper->remove('lastname');
                 $mapper->remove('organizations');
+                $formTabs = $this->getFormTabs();
+                $formTabs['form_tab_individuals']['class'] = $formTabs['form_tab_individuals']['class'] . 'countable-tab count-individuals';
             }
+
+            $this->setFormTabs($formTabs);
         }
     }
 
