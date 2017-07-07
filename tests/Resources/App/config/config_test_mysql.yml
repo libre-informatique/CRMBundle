@@ -12,4 +12,5 @@ doctrine:
         password: ~
         charset: UTF8
     orm:
-auto_mapping: true
+        auto_mapping: true
+
