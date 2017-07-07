@@ -290,6 +290,15 @@ class OrganismAdmin extends CoreAdmin
                     ->end()
                 ;
             }
+            $other = $this->modelManager->findOneBy($this->getClass(), array('email' => $object->getEmail()));
+
+            if (null !== $other && !$other->getId() == $object->getId()) {
+                $errorElement
+                   ->with('email')
+                        ->addViolation('The email must be unique!')
+                   ->end()
+               ;
+            }
         }
     }
 
