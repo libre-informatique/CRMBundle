@@ -182,7 +182,14 @@ parameters:
                                 type: Blast\CoreBundle\Form\Type\EntityCodeType
                                 attr:
                                     placeholder: librinfo.placeholder.supplier_code
-                            circles: ~
+                            circles:
+                                type: sonata_type_model
+                                multiple: true
+                                expanded: false
+                                btn_add: false
+                                required: false
+                                class: Librinfo\CRMBundle\Entity\Circle
+                                query: [Librinfo\CRMBundle\Admin\CircleAdmin, orderedCirclesQuery]
                             category:
                                 type: Blast\BaseEntitiesBundle\Form\Type\NestedTreeableType
                                 class: Librinfo\CRMBundle\Entity\Category
