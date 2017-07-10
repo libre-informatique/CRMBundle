@@ -583,6 +583,7 @@ parameters:
                     description: ~
                     color: ~
                     name: ~
+                    type: ~
                 add:
                     form_tab_general:
                         '':
@@ -590,6 +591,7 @@ parameters:
                                 required: true
                             code: ~
                             description: ~
+                            type: ~
 #                            owner:
 #                                type: sonata_type_model_autocomplete
 #                                route: { name: searchable_admin_retrieve_autocomplete_items }
