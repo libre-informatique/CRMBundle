@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -38,25 +38,25 @@ class CircleAdmin extends CoreAdmin
 
         $query
             ->addSelect('users')
-            ->leftJoin($ra.'.users', 'users')
+            ->leftJoin($ra . '.users', 'users')
         ;
 
         if ($config['Circle']['allow_organizations']) {
             $query
                 ->addSelect('organisms')
-                ->leftJoin($ra.'.organisms', 'organisms')
+                ->leftJoin($ra . '.organisms', 'organisms')
             ;
         }
         if ($config['Circle']['allow_individuals']) {
             $query
                 ->addSelect('contacts')
-                ->leftJoin($ra.'.contacts', 'contacts')
+                ->leftJoin($ra . '.contacts', 'contacts')
             ;
         }
         if ($config['Circle']['allow_positions']) {
             $query
                 ->addSelect('positions')
-                ->leftJoin($ra.'.positions', 'positions')
+                ->leftJoin($ra . '.positions', 'positions')
             ;
         }
 
@@ -79,11 +79,11 @@ class CircleAdmin extends CoreAdmin
             ->join('c1.users', 'u1')
             ->where($expr->eq('c1', $ra));
         $dql1 = $expr->andX(
-                $expr->isNull($ra.'.owner'), $expr->not($expr->exists($subquery1->getDql()))
+                $expr->isNull($ra . '.owner'), $expr->not($expr->exists($subquery1->getDql()))
         );
 
         // 2. the current user is the Circle owner
-        $dql2 = $expr->eq($ra.'.owner', ':user2');
+        $dql2 = $expr->eq($ra . '.owner', ':user2');
 
         // 3. the current user belongs to the circle users
         $subquery3 = $query->getEntityManager()->createQueryBuilder()
@@ -141,12 +141,13 @@ class CircleAdmin extends CoreAdmin
         }
     }
 
-    public static function orderedCirclesQuery($em, $entityClass) {
-        $q = $em->createQuery($entityClass,'c');
+    public static function orderedCirclesQuery($em, $entityClass)
+    {
+        $q = $em->createQuery($entityClass, 'c');
 
         $q
             ->select('c')
-            ->orderBy('c.code','ASC');
+            ->orderBy('c.code', 'ASC');
 
         return $q->getQueryBuilder();
     }
