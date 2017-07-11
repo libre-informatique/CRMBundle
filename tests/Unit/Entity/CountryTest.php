@@ -14,6 +14,7 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Country;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class CountryTest extends TestCase
 {
@@ -22,13 +23,24 @@ class CountryTest extends TestCase
      */
     protected $object;
 
+    protected $mockProvince;
+
     protected function setUp()
     {
         $this->object = new Country();
+        $this->mockProvince = $this->createMock('\Librinfo\CRMBundle\Entity\Province');
     }
 
     protected function tearDown()
     {
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::__construct()
+     */
+    public function test__construct()
+    {
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getProvinces());
     }
 
     /**
@@ -51,5 +63,63 @@ class CountryTest extends TestCase
         $enabled = true;
         $this->object->setEnabled($enabled);
         $this->assertEquals(true, $this->object->getEnabled());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::enable
+     * @covers \Librinfo\CRMBundle\Entity\Country::disable
+     */
+    public function testEnable()
+    {
+        $enabled = false;
+        $this->object->setEnabled($enabled)->enable();
+        $this->assertEquals(true, $this->object->getEnabled());
+
+        $this->object->setEnabled($enabled)->disable();
+        $this->assertEquals(false, $this->object->getEnabled());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::addProvince
+     * @covers \Librinfo\CRMBundle\Entity\Country::removeProvince
+     */
+    public function testAddProvince()
+    {
+        $this->object->addProvince($this->mockProvince);
+        $test = $this->object->getProvinces();
+        $this->assertEquals(1, $test->count());
+
+        $this->object->removeProvince($this->mockProvince);
+        $this->test = $this->object->getProvinces();
+        $this->assertEquals(0, $this->test->count());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::getProvinces
+     */
+    public function testGetProvinces()
+    {
+        // getProvinces() return new ArrayCollection()
+      $test = $this->object->getProvinces();
+        $this->assertInstanceOf(ArrayCollection::class, $test);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::hasProvinces
+     */
+    public function testHasProvinces()
+    {
+        //hasProvinces() return !$this->provinces->isEmpty()
+      $this->assertNotNull($this->object->hasProvinces());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Country::hasProvince
+     */
+    public function testHasProvince()
+    {
+        // hasProvince() return new ArrayCollection()->contains($province)
+      $this->object->addProvince($this->mockProvince);
+        $this->assertTrue($this->object->hasProvince($this->mockProvince));
     }
 }
