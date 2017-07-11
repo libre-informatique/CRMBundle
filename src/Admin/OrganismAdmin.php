@@ -35,6 +35,7 @@ class OrganismAdmin extends CoreAdmin
         $collection->add('validateVat');
         $collection->add('set_default_address', 'set-default-address/{organismId}/{addressId}');
         $collection->add('set_default_phone', 'set-default-phone/{organismId}/{phoneId}');
+        $collection->add('generateFakeEmail');
     }
 
     /**

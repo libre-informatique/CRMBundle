@@ -175,6 +175,8 @@ librinfo:
         supplier_code: 'Code fournisseur'
     msg:
         validating_vat: Validation du numéro de TVA
+    btn:
+        generateFakeEmail: Générer un email
 
 librinfo_crm:
     label:

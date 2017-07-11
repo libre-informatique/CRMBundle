@@ -57,3 +57,8 @@ services:
         class: Librinfo\CRMBundle\Form\Type\MainPhoneType
         tags:
             - { name: form.type, alias: librinfo_main_phone }
+
+    librinfo_crm.form.type.fake_email:
+        class: Librinfo\CRMBundle\Form\Type\FakeEmailType
+        tags:
+            - { name: form.type, alias: librinfo_fake_email }
