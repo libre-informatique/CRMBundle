@@ -121,4 +121,24 @@ class OrganismAdminController extends CRUDController
 
         return new RedirectResponse($this->get('librinfo_crm.admin.organism')->generateObjectUrl('edit', $organism));
     }
+
+    public function generateFakeEmailAction(Request $request)
+    {
+        $fakeEmailParameters = $this->getParameter('lisem.fake_email','fake.email');
+        $emailDomain = $fakeEmailParameters['domain'] ?: 'fake.email';
+        $emailPrefix = $fakeEmailParameters['prefix'] ?: 'fake_';
+        $emailSuffix = $fakeEmailParameters['suffix'] ?: '';
+
+        $uniqueChain = time();
+
+        $email = sprintf(
+            '%1$s%4$s%2$s@%3$s',
+            $emailPrefix,
+            $emailSuffix,
+            $emailDomain,
+            $uniqueChain
+        );
+
+        return new JsonResponse(['email'=>$email]);
+    }
 }

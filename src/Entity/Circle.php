@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -54,6 +54,11 @@ class Circle
      * @var bool
      */
     private $editable = true;
+
+    /**
+     * @var string
+     */
+    private $type;
 
     /**
      * @var Collection
@@ -165,6 +170,26 @@ class Circle
     public function isEditable()
     {
         return $this->editable;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 
     /**
