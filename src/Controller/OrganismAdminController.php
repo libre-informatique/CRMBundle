@@ -1,11 +1,11 @@
 <?php
 
 /*
- * This file is part of the Blast Project package.
+ * This file is part of the Lisem Project.
  *
  * Copyright (C) 2015-2017 Libre Informatique
  *
- * This file is licenced under the GNU LGPL v3.
+ * This file is licenced under the GNU GPL v3.
  * For the full copyright and license information, please view the LICENSE.md
  * file that was distributed with this source code.
  */
@@ -124,7 +124,7 @@ class OrganismAdminController extends CRUDController
 
     public function generateFakeEmailAction(Request $request)
     {
-        $fakeEmailParameters = $this->getParameter('lisem.fake_email','fake.email');
+        $fakeEmailParameters = $this->getParameter('lisem.fake_email', 'fake.email');
         $emailDomain = $fakeEmailParameters['domain'] ?: 'fake.email';
         $emailPrefix = $fakeEmailParameters['prefix'] ?: 'fake_';
         $emailSuffix = $fakeEmailParameters['suffix'] ?: '';
@@ -139,6 +139,6 @@ class OrganismAdminController extends CRUDController
             $uniqueChain
         );
 
-        return new JsonResponse(['email'=>$email]);
+        return new JsonResponse(['email' => $email]);
     }
 }

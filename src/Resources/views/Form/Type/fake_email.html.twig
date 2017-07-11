@@ -10,21 +10,24 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+        (function($) {
             var fieldContainer = $('#fakeEmailContainer_{{id}}');
 
-            var emailInput = fieldContainer.find('#{{id}}').detach();
-            var generateBtn = fieldContainer.find('.fakeEmailBtn').detach();
-            var inpuGroup = $('<div/>').attr({'class': 'input-group col-xs-12'});
+            $(document).ready(function() {
 
-            generateBtn.addClass('input-group-addon');
+                var emailInput = fieldContainer.find('#{{id}}').detach();
+                var generateBtn = fieldContainer.find('.fakeEmailBtn').detach();
+                var inpuGroup = $('<div/>').attr({'class': 'input-group col-xs-12'});
 
-            fieldContainer.prepend(inpuGroup.append(emailInput).append(generateBtn));
-        }).on('click', '#fakeEmailContainer_{{id}} .fakeEmailBtn', function() {
-            $.get(Routing.generate('admin_librinfo_crm_organism_generateFakeEmail'),function(json) {
-                alert(JSON.stringify(json));
+                generateBtn.addClass('input-group-addon');
+
+                fieldContainer.prepend(inpuGroup.append(emailInput).append(generateBtn));
+            }).on('click', '#fakeEmailContainer_{{id}} .fakeEmailBtn', function() {
+                $.get(Routing.generate('admin_librinfo_crm_organism_generateFakeEmail'), function(json) {
+                    fieldContainer.find('#{{id}}').val(json.email);
+                });
             });
-        });
+        })(jQuery);
     </script>
 
     {% dump(_context) %}
