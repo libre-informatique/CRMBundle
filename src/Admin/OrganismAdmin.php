@@ -46,7 +46,6 @@ class OrganismAdmin extends CoreAdmin
         $subject = $this->getSubject();
 
         if ($subject->getId()) {
-
             $mapper->get('customerCode')->addViewTransformer(new CustomerCodeTransformer());
             $mapper->get('supplierCode')->addViewTransformer(new SupplierCodeTransformer());
 
