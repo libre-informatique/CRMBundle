@@ -177,11 +177,13 @@ parameters:
                                 type: Blast\CoreBundle\Form\Type\EntityCodeType
                                 attr:
                                     placeholder: librinfo.placeholder.customer_code
+                                only_not_new: true
                             isSupplier: ~
                             supplierCode:
                                 type: Blast\CoreBundle\Form\Type\EntityCodeType
                                 attr:
                                     placeholder: librinfo.placeholder.supplier_code
+                                only_not_new: true
                             circles:
                                 type: sonata_type_model
                                 multiple: true
@@ -368,9 +370,6 @@ parameters:
                         identifier: true
                         label: librinfo.label.contact
                         sortable: name
-#                    positions:
-#                        associated_property: contactDescription
-#                        label: librinfo.label.organisms
                     email:
                         identifier: true
                     customerCode:

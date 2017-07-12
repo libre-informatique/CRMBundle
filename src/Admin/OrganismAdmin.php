@@ -43,12 +43,13 @@ class OrganismAdmin extends CoreAdmin
      */
     protected function postConfigureFormFields(FormMapper $mapper)
     {
-        $mapper->get('customerCode')->addViewTransformer(new CustomerCodeTransformer());
-        $mapper->get('supplierCode')->addViewTransformer(new SupplierCodeTransformer());
-
         $subject = $this->getSubject();
 
         if ($subject->getId()) {
+
+            $mapper->get('customerCode')->addViewTransformer(new CustomerCodeTransformer());
+            $mapper->get('supplierCode')->addViewTransformer(new SupplierCodeTransformer());
+
             $mapper->remove('isIndividual');
             if ($subject->isIndividual()) {
                 $mapper->remove('name');
