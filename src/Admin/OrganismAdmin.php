@@ -165,7 +165,7 @@ class OrganismAdmin extends CoreAdmin
         $is_new = empty($object->getId());
         $code = $object->getCustomerCode();
 
-        if (empty($code) && $object->isCustomer()) {
+        if (empty($code) && $object->isCustomer() && !$is_new) {
             $errorElement
                 ->with('customerCode')
                     ->addViolation('A customer code is required for customers')
@@ -223,7 +223,7 @@ class OrganismAdmin extends CoreAdmin
         $is_new = empty($object->getId());
         $code = $object->getSupplierCode();
 
-        if (empty($code) && $object->isSupplier()) {
+        if (empty($code) && $object->isSupplier() && !$is_new) {
             $errorElement
                 ->with('supplierCode')
                     ->addViolation('A supplier code is required for suppliers')
