@@ -85,8 +85,6 @@ $(document).ready(function() {
                 code.show().prop('required', true);
                 link.show();
 
-                console.info(code);
-
                 if (code.val().trim() === "" && formDataElement.data('customer-error')) {
                     generateCustomerCode();
                 }

@@ -102,7 +102,9 @@ class OrganismAdminController extends CRUDController
             $manager->flush();
         }
 
-        return new RedirectResponse($this->get('librinfo_crm.admin.organism')->generateObjectUrl('edit', $organism));
+        $referer = $this->getRequest()->headers->get('referer');
+
+        return new RedirectResponse($referer);
     }
 
     public function setDefaultPhoneAction($organismId, $phoneId)
@@ -119,7 +121,9 @@ class OrganismAdminController extends CRUDController
             $manager->flush();
         }
 
-        return new RedirectResponse($this->get('librinfo_crm.admin.organism')->generateObjectUrl('edit', $organism));
+        $referer = $this->getRequest()->headers->get('referer');
+
+        return new RedirectResponse($referer);
     }
 
     public function generateFakeEmailAction(Request $request)
