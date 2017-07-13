@@ -177,6 +177,8 @@ librinfo:
         validating_vat: Validation du numéro de TVA
     btn:
         generateFakeEmail: Générer un email
+        manage: Gérer
+        add: Ajouter
 
 librinfo_crm:
     label:
