@@ -706,6 +706,17 @@ parameters:
                             emailNpai: ~
                             emailNoNewsletter: ~
                             phone: ~
+                            _options:
+                                fieldsOrder:
+                                    - positionType
+                                    - individual
+                                    - organization
+                                    - department
+                                    - label
+                                    - email
+                                    - emailNpai
+                                    - emailNoNewsletter
+                                    - phone
                         _options:
                             groupsOrder: [form_group_individual, form_group_organization, form_group_specifics]
                     _options:
