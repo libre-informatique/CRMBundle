@@ -40,7 +40,7 @@ class CategoryTest extends TestCase
      */
     public function test__construct()
     {
-        // testing $this->initCollections() with init NesteTreeable treeChildren Collection
+      // testing $this->initCollections() with init NesteTreeable treeChildren Collection
       $this->assertInstanceOf(ArrayCollection::class, $this->object->getTreeChildren());
 
       // testing $this->organisms = new ArrayCollection()
@@ -54,19 +54,19 @@ class CategoryTest extends TestCase
      */
     public function testAddOrganism()
     {
-        // get Organism
+      // get Organism
       $test = $this->object->getOrganisms();
-        $this->assertEquals(0, $test->count());
+      $this->assertEquals(0, $test->count());
 
       // add Organism
       $organism = $this->mockOrganism;
-        $this->object->addOrganism($organism);
-        $test = $this->object->getOrganisms();
-        $this->assertEquals(1, $test->count());
+      $this->object->addOrganism($organism);
+      $test = $this->object->getOrganisms();
+      $this->assertEquals(1, $test->count());
 
       // remove Organism
       $this->object->removeOrganism($organism);
-        $test = $this->object->getOrganisms();
-        $this->assertEquals(0, $test->count());
+      $test = $this->object->getOrganisms();
+      $this->assertEquals(0, $test->count());
     }
 }
