@@ -56,7 +56,7 @@ class SupplierCodeGenerator implements CodeGeneratorInterface
             $max = $res ? (int) $res[0]['code'] : 0;
 
             if ($organism->getSupplierCode() === null) {
-                return sprintf('%s%0'.self::$codeLength.'d', self::$codePrefix, $max + 1);
+                return sprintf('%s%0' . self::$codeLength . 'd', self::$codePrefix, $max + 1);
             } else {
                 return $organism->getCustomerCode();
             }
