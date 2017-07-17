@@ -87,8 +87,5 @@ class CountryTest extends TestCase
         // testing removeProvince(Province $province) return $this
         $rm = $this->object->removeProvince($province)->getProvinces();
         $this->assertNotContains($province, $rm);
-
-        $this->object->setEnabled($enabled);
-        $this->assertEquals(true, $this->object->getEnabled());
     }
 }

@@ -162,17 +162,6 @@ class OrganismTest extends TestCase
     }
 
     /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setCategory
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
-     */
-    public function testSetCategory()
-    {
-        $category = null;
-        $this->object->setCategory($category);
-        $this->assertNull($this->object->getCategory());
-    }
-
-    /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsIndividual
      * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
      */
