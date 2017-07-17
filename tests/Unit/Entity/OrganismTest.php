@@ -23,9 +23,12 @@ class OrganismTest extends TestCase
      */
     protected $object;
 
+    protected $mockCategory;
+
     protected function setUp()
     {
         $this->object = new Organism();
+        $this->mockCategory = $this->createMock('\Librinfo\CRMBundle\Entity\Category');
     }
 
     protected function tearDown()
@@ -51,14 +54,14 @@ class OrganismTest extends TestCase
     public function test__clone()
     {
         // init
-       $id = 'id';
+      $id = 'id';
         $this->object->setId($id);
-       // test methods
-       $clone = clone $this->object;
+      // test methods
+      $clone = clone $this->object;
         $this->assertNull($clone->getId());
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
-       //test object
-       $this->assertEquals($id, $this->object->getId());
+      //test object
+      $this->assertEquals($id, $this->object->getId());
     }
 
     /**
@@ -92,6 +95,7 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::getLastname
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setLastname
      */
     public function testGetLastname()
     {
@@ -150,17 +154,6 @@ class OrganismTest extends TestCase
     }
 
     /**
-     * @covers \Librinfo\CRMBundle\Entity\Organism::setCategory
-     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
-     */
-    public function testSetCategory()
-    {
-        $category = null;
-        $this->object->setCategory($category);
-        $this->assertNull($this->object->getCategory());
-    }
-
-    /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsIndividual
      * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
      */
@@ -205,10 +198,180 @@ class OrganismTest extends TestCase
     }
 
     /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setUrl
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getUrl
+     */
+    public function testSetUrl()
+    {
+        $url = 'toto';
+        $set = $this->object->setUrl($url);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getUrl();
+        $this->assertEquals('toto', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setAdministrativeNumber
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getAdministrativeNumber
+     */
+    public function testSetAdministrativeNumber()
+    {
+        $administrativeNumber = 'foo';
+        $set = $this->object->setAdministrativeNumber($administrativeNumber);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getAdministrativeNumber();
+        $this->assertEquals('foo', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCategory
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
+     */
+    public function testSetCategory()
+    {
+        $category = $this->mockCategory = null;
+        $get = $this->object->setCategory($category);
+        $this->assertInstanceOf(Organism::class, $get);
+
+        $set = $this->object->getCategory();
+        $this->assertEquals(null, $set);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCustomerCode
+     *
+     * @todo   Implement testGetCustomerCode().
+     */
+    public function testGetCustomerCode()
+    {
+        $customerCode = 'moo';
+        $set = $this->object->setCustomerCode($customerCode);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getCustomerCode();
+        $this->assertEquals('moo', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setSupplierCode
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getSupplierCode
+     */
+    public function testSetSupplierCode()
+    {
+        $supplierCode = 'boo';
+        $set = $this->object->setSupplierCode($supplierCode);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getSupplierCode();
+        $this->assertEquals('boo', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setIban
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIban
+     */
+    public function testSetIban()
+    {
+        $iban = 'to';
+        $set = $this->object->setIban($iban);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getIban();
+        $this->assertEquals('to', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setVat
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getVat
+     */
+    public function testSetVat()
+    {
+        $vat = 'rol';
+        $set = $this->object->setVat($vat);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getVat();
+        $this->assertEquals('rol', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setAlert
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getAlert
+     */
+    public function testSetAlert()
+    {
+        $alert = 'to';
+        $set = $this->object->setAlert($alert);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getAlert();
+        $this->assertEquals('to', $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setActive
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getActive
+     */
+    public function testSetActive()
+    {
+        $active = true;
+        $set = $this->object->setActive($active);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getActive();
+        $this->assertEquals(true, $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCatalogueSent
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCatalogueSent
+     */
+    public function testSetCatalogueSent()
+    {
+        $catalogueSent = true;
+        $set = $this->object->setCatalogueSent($catalogueSent);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getCatalogueSent();
+        $this->assertEquals(true, $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCatalogueSendMean
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCatalogueSendMean
+     */
+    public function testSetCatalogueSendMean()
+    {
+        $catalogueSendMean = true;
+        $set = $this->object->setCatalogueSendMean($catalogueSendMean);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getCatalogueSendMean();
+        $this->assertEquals(true, $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setSource
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getSource
+     */
+    public function testSetSource()
+    {
+        $source = 'poo';
+        $set = $this->object->setSource($source);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getSource();
+        $this->assertEquals('poo', $get);
+    }
+
+    /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::isPersonal
      */
     public function testIsPersonal()
     {
-        $this->assertFalse($this->object->isPersonal());
+        $test = $this->object->isPersonal();
+        $this->assertEquals(false, $test);
     }
 }

@@ -22,42 +22,13 @@ class ZipCityTypeTest extends TestCase
      */
     protected $object;
 
-    protected $mockOptionsResolver;
-
     protected function setUp()
     {
         $this->object = new ZipCityType();
-        $this->mockOptionsResolver = $this->createMock('\Symfony\Component\OptionsResolver\OptionsResolver');
     }
 
     protected function tearDown()
     {
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Form\Type\ZipCityType::configureOptions
-     *
-     * @todo   Implement testConfigureOptions().
-     */
-    public function testConfigureOptions()
-    {
-        // Remove the following lines when you implement this test.
-      $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-      );
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Form\Type\ZipCityType::buildView
-     *
-     * @todo   Implement testBuildView().
-     */
-    public function testBuildView()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 
     /**
@@ -66,7 +37,7 @@ class ZipCityTypeTest extends TestCase
     public function testGetParent()
     {
         // getParent() return 'text'
-      $test = $this->object->getParent();
+        $test = $this->object->getParent();
         $this->assertEquals('text', $test);
     }
 
@@ -76,7 +47,7 @@ class ZipCityTypeTest extends TestCase
     public function testGetBlockPrefix()
     {
         // getBlockPrefix() return 'Librinfo_zip_city'
-      $this->assertEquals('librinfo_zip_city', $this->object->getBlockPrefix());
+        $this->assertEquals('librinfo_zip_city', $this->object->getBlockPrefix());
     }
 
     /**
@@ -85,7 +56,6 @@ class ZipCityTypeTest extends TestCase
     public function testGetName()
     {
         // getName() return getBlockPrefix()
-      $test = $this->object->getName();
-        $this->assertEquals($test, $this->object->getBlockPrefix());
+        $this->assertEquals('librinfo_zip_city', $this->object->getName());
     }
 }

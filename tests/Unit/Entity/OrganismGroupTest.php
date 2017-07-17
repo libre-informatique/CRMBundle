@@ -85,7 +85,8 @@ class OrganismGroupTest extends TestCase
      */
     public function testAddRole()
     {
-        $this->object->addRole($this->mockRole)->getRoles();
+        $role = $this->mockRole;
+        $this->object->addRole($role)->getRoles();
         $this->assertEquals(1, $this->object->getRoles()->count());
     }
 
