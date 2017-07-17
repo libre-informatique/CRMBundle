@@ -22,12 +22,18 @@ class CountryTest extends TestCase
      */
     protected $object;
 
+<<<<<<< HEAD
     protected $mockProvince;
 
     protected function setUp()
     {
         $this->object = new Country();
         $this->mockProvince = $this->createMock('\Librinfo\CRMBundle\Entity\Province');
+=======
+    protected function setUp()
+    {
+        $this->object = new Country();
+>>>>>>> original_wip-test/wip-test
     }
 
     protected function tearDown()
@@ -40,10 +46,16 @@ class CountryTest extends TestCase
      */
     public function testSetCode()
     {
+<<<<<<< HEAD
         $code = 'loo';
         $set = $this->object->setCode($code);
         $get = $this->object->getCode();
         $this->assertEquals('loo', $get);
+=======
+        $test = 'ABG';
+        $this->object->setCode($test);
+        $this->assertEquals('ABG', $this->object->getCode());
+>>>>>>> original_wip-test/wip-test
     }
 
     /**
@@ -53,6 +65,7 @@ class CountryTest extends TestCase
     public function testSetEnabled()
     {
         $enabled = true;
+<<<<<<< HEAD
         $set = $this->object->setEnabled($enabled);
         $get = $this->object->getEnabled();
         $this->assertEquals(true, $get);
@@ -82,5 +95,9 @@ class CountryTest extends TestCase
         // testing removeProvince(Province $province) return $this
         $rm = $this->object->removeProvince($province)->getProvinces();
         $this->assertNotContains($province, $rm);
+=======
+        $this->object->setEnabled($enabled);
+        $this->assertEquals(true, $this->object->getEnabled());
+>>>>>>> original_wip-test/wip-test
     }
 }

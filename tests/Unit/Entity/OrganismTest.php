@@ -23,12 +23,18 @@ class OrganismTest extends TestCase
      */
     protected $object;
 
+<<<<<<< HEAD
     protected $mockCategory;
 
     protected function setUp()
     {
         $this->object = new Organism();
         $this->mockCategory = $this->createMock('\Librinfo\CRMBundle\Entity\Category');
+=======
+    protected function setUp()
+    {
+        $this->object = new Organism();
+>>>>>>> original_wip-test/wip-test
     }
 
     protected function tearDown()
@@ -54,6 +60,7 @@ class OrganismTest extends TestCase
     public function test__clone()
     {
         // init
+<<<<<<< HEAD
       $id = 'id';
         $this->object->setId($id);
       // test methods
@@ -62,6 +69,16 @@ class OrganismTest extends TestCase
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
       //test object
       $this->assertEquals($id, $this->object->getId());
+=======
+       $id = 'id';
+        $this->object->setId($id);
+       // test methods
+       $clone = clone $this->object;
+        $this->assertNull($clone->getId());
+        $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
+       //test object
+       $this->assertEquals($id, $this->object->getId());
+>>>>>>> original_wip-test/wip-test
     }
 
     /**
@@ -95,7 +112,10 @@ class OrganismTest extends TestCase
 
     /**
      * @covers \Librinfo\CRMBundle\Entity\Organism::getLastname
+<<<<<<< HEAD
      * @covers \Librinfo\CRMBundle\Entity\Organism::setLastname
+=======
+>>>>>>> original_wip-test/wip-test
      */
     public function testGetLastname()
     {
@@ -154,6 +174,20 @@ class OrganismTest extends TestCase
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCategory
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCategory
+     */
+    public function testSetCategory()
+    {
+        $category = null;
+        $this->object->setCategory($category);
+        $this->assertNull($this->object->getCategory());
+    }
+
+    /**
+>>>>>>> original_wip-test/wip-test
      * @covers \Librinfo\CRMBundle\Entity\Organism::setIsIndividual
      * @covers \Librinfo\CRMBundle\Entity\Organism::getIsIndividual
      */
@@ -198,6 +232,7 @@ class OrganismTest extends TestCase
     }
 
     /**
+<<<<<<< HEAD
      * @covers \Librinfo\CRMBundle\Entity\Organism::setUrl
      * @covers \Librinfo\CRMBundle\Entity\Organism::getUrl
      */
@@ -367,11 +402,17 @@ class OrganismTest extends TestCase
     }
 
     /**
+=======
+>>>>>>> original_wip-test/wip-test
      * @covers \Librinfo\CRMBundle\Entity\Organism::isPersonal
      */
     public function testIsPersonal()
     {
+<<<<<<< HEAD
         $test = $this->object->isPersonal();
         $this->assertEquals(false, $test);
+=======
+        $this->assertFalse($this->object->isPersonal());
+>>>>>>> original_wip-test/wip-test
     }
 }
