@@ -23,18 +23,12 @@ class OrganismTest extends TestCase
      */
     protected $object;
 
-
     protected $mockCategory;
 
     protected function setUp()
     {
         $this->object = new Organism();
         $this->mockCategory = $this->createMock('\Librinfo\CRMBundle\Entity\Category');
-
-    protected function setUp()
-    {
-        $this->object = new Organism();
-
     }
 
     protected function tearDown()
@@ -59,21 +53,21 @@ class OrganismTest extends TestCase
      */
     public function test__clone()
     {
-      // init
+        // init
       $id = 'id';
-      $this->object->setId($id);
+        $this->object->setId($id);
       // test methods
       $clone = clone $this->object;
-      $this->assertNull($clone->getId());
-      $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
+        $this->assertNull($clone->getId());
+        $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
       //test object
       $this->assertEquals($id, $this->object->getId());
-      $id = 'id';
-      $this->object->setId($id);
+        $id = 'id';
+        $this->object->setId($id);
       // test methods
       $clone = clone $this->object;
-      $this->assertNull($clone->getId());
-      $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
+        $this->assertNull($clone->getId());
+        $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
       //test object
       $this->assertEquals($id, $this->object->getId());
     }
@@ -400,6 +394,5 @@ class OrganismTest extends TestCase
         $this->assertEquals(false, $test);
 
         $this->assertFalse($this->object->isPersonal());
-
     }
 }

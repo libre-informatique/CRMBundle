@@ -22,18 +22,12 @@ class CountryTest extends TestCase
      */
     protected $object;
 
-
     protected $mockProvince;
 
     protected function setUp()
     {
         $this->object = new Country();
         $this->mockProvince = $this->createMock('\Librinfo\CRMBundle\Entity\Province');
-
-    protected function setUp()
-    {
-        $this->object = new Country();
-
     }
 
     protected function tearDown()
@@ -46,7 +40,6 @@ class CountryTest extends TestCase
      */
     public function testSetCode()
     {
-
         $code = 'loo';
         $set = $this->object->setCode($code);
         $get = $this->object->getCode();
@@ -55,7 +48,6 @@ class CountryTest extends TestCase
         $test = 'ABG';
         $this->object->setCode($test);
         $this->assertEquals('ABG', $this->object->getCode());
-
     }
 
     /**
@@ -98,6 +90,5 @@ class CountryTest extends TestCase
 
         $this->object->setEnabled($enabled);
         $this->assertEquals(true, $this->object->getEnabled());
-
     }
 }

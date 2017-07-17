@@ -23,7 +23,6 @@ class OrganismGroupTest extends TestCase
      */
     protected $object;
 
-
     protected $roles;
 
     protected $mockRole;
@@ -33,11 +32,6 @@ class OrganismGroupTest extends TestCase
         $this->object = new OrganismGroup();
         $this->roles = new ArrayCollection();
         $this->mockRole = $this->createMock('\Librinfo\CRMBundle\Entity\Role');
-
-    protected function setUp()
-    {
-        $this->object = new OrganismGroup();
-
     }
 
     protected function tearDown()
@@ -58,7 +52,6 @@ class OrganismGroupTest extends TestCase
      */
     public function testGetContact()
     {
-
         $contact = 'toto';
         $this->object->setContact($contact);
         $this->assertContains('toto', $this->object->getContact());
@@ -74,7 +67,6 @@ class OrganismGroupTest extends TestCase
      */
     public function testGetOrganism()
     {
-
         $organism = 'clps';
         $this->object->setOrganism($organism);
         $this->assertEquals('clps', $this->object->getOrganism());
@@ -90,7 +82,6 @@ class OrganismGroupTest extends TestCase
      */
     public function testGetRoles()
     {
-
         $role = 'fireman';
         $this->object->setRoles($this->roles);
         $this->object->getRoles()->add($role);
@@ -124,7 +115,6 @@ class OrganismGroupTest extends TestCase
         $this->object->setRoles($roles);
         $this->object->getRoles()->add($role);
         $this->assertContains('toto', $this->object->getRoles());
-
     }
 
     /**
