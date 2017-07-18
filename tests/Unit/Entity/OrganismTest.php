@@ -54,22 +54,18 @@ class OrganismTest extends TestCase
     public function test__clone()
     {
         // init
-      $id = 'id';
-        $this->object->setId($id);
-      // test methods
-      $clone = clone $this->object;
-        $this->assertNull($clone->getId());
-        $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
-      //test object
-      $this->assertEquals($id, $this->object->getId());
         $id = 'id';
         $this->object->setId($id);
-      // test methods
-      $clone = clone $this->object;
+
+        // test methods
+        $clone = clone $this->object;
         $this->assertNull($clone->getId());
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
-      //test object
-      $this->assertEquals($id, $this->object->getId());
+
+        //test object
+        $this->assertEquals($id, $this->object->getId());
+        $id = 'id';
+        $this->object->setId($id);
     }
 
     /**
