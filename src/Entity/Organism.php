@@ -926,7 +926,7 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
     /**
      * {@inheritdoc}
      */
-    public function addPhone(Phone $phone)
+    public function addPhone(OrganismPhone $phone)
     {
         if (!$this->hasPhone($phone)) {
             $this->phones->add($phone);
