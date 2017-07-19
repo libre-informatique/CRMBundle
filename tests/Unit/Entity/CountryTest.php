@@ -41,7 +41,7 @@ class CountryTest extends TestCase
      */
     public function test__Construct()
     {
-      $this->assertInstanceOf(ArrayCollection::class,$this->object->getProvinces());
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getProvinces());
     }
 
     /**
@@ -79,7 +79,6 @@ class CountryTest extends TestCase
         // testing enable()
         $this->object->enable();
         $this->assertEquals(true, $this->object->getEnabled());
-
     }
 
     /**
@@ -107,5 +106,4 @@ class CountryTest extends TestCase
         $rm = $this->object->removeProvince($province)->getProvinces();
         $this->assertNotContains($province, $rm);
     }
-
 }
