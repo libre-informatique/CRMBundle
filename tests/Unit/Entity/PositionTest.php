@@ -82,6 +82,7 @@ class PositionTest extends TestCase
     /**
      * @covers \Librinfo\CRMBundle\Entity\Position::setPositionType
      * @covers \Librinfo\CRMBundle\Entity\Position::getPositionType
+     * @covers \Librinfo\CRMBundle\Entity\Position::__toString
      */
     public function testSetPositionType()
     {
@@ -92,6 +93,8 @@ class PositionTest extends TestCase
 
         $get = $this->object->getPositionType();
         $this->assertEquals('xx', $get);
+
+        $this->assertEquals('xx', $this->object->__toString());
     }
 
     /**

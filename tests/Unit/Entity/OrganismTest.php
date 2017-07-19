@@ -15,6 +15,10 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Organism;
 use Doctrine\Common\Collections\ArrayCollection;
+use Librinfo\CRMBundle\Entity\Position;
+use Librinfo\CRMBundle\Entity\Phone;
+use Librinfo\CRMBundle\Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class OrganismTest extends TestCase
 {
@@ -23,12 +27,16 @@ class OrganismTest extends TestCase
      */
     protected $object;
 
-    protected $mockCategory;
+    protected $category;
+    protected $position;
+    protected $phone;
 
     protected function setUp()
     {
         $this->object = new Organism();
-        $this->mockCategory = $this->createMock('\Librinfo\CRMBundle\Entity\Category');
+        $this->category = new Category();
+        $this->position = new Position();
+        $this->phone = $this->getMockForAbstractClass(Phone::class);
     }
 
     protected function tearDown()
@@ -379,5 +387,139 @@ class OrganismTest extends TestCase
         $this->assertEquals(false, $test);
 
         $this->assertFalse($this->object->isPersonal());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setDefaultPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getDefaultPhone
+     */
+    public function testSetDefaultPhone()
+    {
+        $defaultPhone = $this->phone;
+        $this->object->setDefaultPhone($defaultPhone);
+        $this->assertEquals($defaultPhone, $this->object->getDefaultPhone());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addOrganization
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removeOrganization
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getOrganizations
+     */
+    public function testRemoveOrganization()
+    {
+        // add $organization
+        $organization = $this->position;
+        $this->object->addOrganization($organization); // organizations not init ,view Organism.php
+        $this->assertContains($organization, $this->object->getOrganizations());
+
+        // remove $organization
+        $this->object->removeOrganization($organization);
+        $this->assertNotContains($organization, $this->object->getOrganizations());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removeIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIndividuals
+     */
+    public function testRemoveIndividual()
+    {
+        // add $individual
+        $individual = $this->position;
+        $this->object->addIndividual($individual);
+        $this->assertContains($individual, $this->object->getIndividuals());
+
+        // remove $individual
+        $this->object->removeIndividual($individual);
+        $this->assertNotContains($individual, $this->object->getIndividuals());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removePhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::hasPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getPhones
+     */
+    public function testRemovePhone()
+    {
+        // add $phone
+        $phone = $this->phone;
+        $this->object->addPhone($phone); // à signaler Organism.php setOrganism() vs setPhoneType()
+        $this->assertContains($phone, $this->object->getPhones());
+
+        // testing hasPhone(Phone $phone) return bool
+        $has = $this->object->hasPhone($phone);
+        $this->assertContains($has, $this->object->getPhones());
+
+        // remove $phone
+        $this->object->removePhone($phone);
+        $this->assertNotContains($phone, $this->object->getPhones());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFirstCatalogueSentDate
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFirstCatalogueSentDate
+     */
+    public function testSetFirstCatalogueSentDate()
+    {
+        $firstCatalogueSentDate = new Assert\DateTime();
+        $set = $this->object->setFirstCatalogueSentDate($firstCatalogueSentDate);
+        $this->assertInstanceOf(Organism::class, $set);
+
+        $get = $this->object->getFirstCatalogueSentDate();
+        $this->assertEquals($firstCatalogueSentDate, $get);
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setLastCatalogueSentDate
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getLastCatalogueSentDate
+     */
+    public function testSetLastCatalogueSentDate()
+    {
+        $lastCatalogueSentDate = new Assert\DateTime();
+        $this->object->setLastCatalogueSentDate($lastCatalogueSentDate);
+        $this->assertEquals($lastCatalogueSentDate, $this->object->getLastCatalogueSentDate());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFamilyContact
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFamilyContact
+     */
+    public function testSetFamilyContact()
+    {
+        $familyContact = true;
+        $this->object->setFamilyContact($familyContact);
+        $this->assertEquals(true, $this->object->getFamilyContact());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFlashOnControl
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFlashOnControl
+     */
+    public function testSetFlashOnControl()
+    {
+        $flashOnControl = 'xx';
+        $this->object->setFlashOnControl($flashOnControl);
+        $this->assertEquals('xx', $this->object->getFlashOnControl());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFulltextName
+     */
+    public function testGetFulltextName()
+    {
+        // if !$this->isIndividual()
+        $this->object->setName('coo');
+        $this->object->getName();
+        $this->assertEquals('COO', $this->object->getFulltextName());
+
+        // if $this->isIndividual()
+        $this->object->setIsIndividual(true);
+        $this->object->isIndividual();
+        $this->object->setLastname('Zoro');
+        $this->object->getLastname();
+        $this->object->setFirstname('Dooo');
+        $this->object->getFirstname();
+        $this->assertEquals('Dooo ZORO', $this->object->getFulltextName());
     }
 }
