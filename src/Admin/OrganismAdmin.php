@@ -33,15 +33,17 @@ class OrganismAdmin extends CoreAdmin
 
         $qb = $proxyQuery->getQueryBuilder();
 
-        // $qb->addSelect(' AS HIDDEN fulltextname');
-        $qb->orderBy('CONCAT_WS(\'_\', o.firstname,o.lastname,o.name)', 'ASC');
-        // $qb->addOrderBy('o.name', 'ASC');
+        $request = $this->getRequest();
 
-        // dump($qb);die;
+        $filters = $request->query->get('filter', null);
+        $currentsort = $filters['_sort_by'];
+        $currentsortOrder = $filters['_sort_order'];
 
-        // $proxyQuery->addOrderBy('o.firstname', 'ASC');
-        // $proxyQuery->addOrderBy('o.lastname', 'ASC');
-        // $proxyQuery->addOrderBy('o.name', 'ASC');
+        if ($currentsort === null || $currentsort === 'name') {
+            $currentsortOrder = ($currentsortOrder === null ? 'ASC' : $currentsortOrder);
+
+            $qb->orderBy('CONCAT_WS(\'_\', o.firstname,o.lastname,o.name)', $currentsortOrder);
+        }
 
         return $proxyQuery;
     }
