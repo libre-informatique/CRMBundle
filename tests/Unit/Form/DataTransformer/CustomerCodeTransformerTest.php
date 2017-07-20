@@ -37,9 +37,7 @@ class CustomerCodeTransformerTest extends TestCase
     public function testTransform()
     {
         // $code is null or string ,transform($code) return $code
-        $transform = 'toto';
-        $test = $this->object->transform($transform);
-        $this->assertEquals('toto', $test);
+        $this->assertEquals('toto', $this->object->transform('toto'));
         $this->assertEquals('', $this->object->transform(null));
     }
 
@@ -48,9 +46,7 @@ class CustomerCodeTransformerTest extends TestCase
      */
     public function testReverseTransform()
     {
-        $reverse = trim('1234');
-        $test = $this->object->reverseTransform($reverse);
-        $this->assertEquals(1234, $test);
+        $this->assertEquals(1234, $this->object->reverseTransform(trim('1234')));
         $this->assertEquals(null, $this->object->reverseTransform(''));
     }
 }

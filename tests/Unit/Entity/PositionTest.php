@@ -41,7 +41,6 @@ class PositionTest extends TestCase
     public function testSetPhone()
     {
         $phone = 'fix';
-
         $set = $this->object->setPhone($phone);
         $this->assertInstanceOf(Position::class, $set);
 
@@ -132,7 +131,6 @@ class PositionTest extends TestCase
      */
     public function testIsPersonal()
     {
-        $test = $this->object->isPersonal();
-        $this->assertEquals(false, $test);
+        $this->assertEquals(false, $this->object->isPersonal());
     }
 }

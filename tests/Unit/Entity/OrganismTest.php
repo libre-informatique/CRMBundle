@@ -17,6 +17,7 @@ use Librinfo\CRMBundle\Entity\Organism;
 use Doctrine\Common\Collections\ArrayCollection;
 use Librinfo\CRMBundle\Entity\Position;
 use Librinfo\CRMBundle\Entity\Phone;
+use Librinfo\CRMBundle\Entity\OrganismPhone;
 use Librinfo\CRMBundle\Entity\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -30,6 +31,7 @@ class OrganismTest extends TestCase
     protected $category;
     protected $position;
     protected $phone;
+    protected $organismPhone;
 
     protected function setUp()
     {
@@ -37,6 +39,7 @@ class OrganismTest extends TestCase
         $this->category = new Category();
         $this->position = new Position();
         $this->phone = $this->getMockForAbstractClass(Phone::class);
+        $this->organismPhone = new OrganismPhone();
     }
 
     protected function tearDown()
@@ -395,7 +398,7 @@ class OrganismTest extends TestCase
      */
     public function testSetDefaultPhone()
     {
-        $defaultPhone = $this->phone;
+        $defaultPhone = $this->organismPhone;
         $this->object->setDefaultPhone($defaultPhone);
         $this->assertEquals($defaultPhone, $this->object->getDefaultPhone());
     }
@@ -443,8 +446,8 @@ class OrganismTest extends TestCase
     public function testRemovePhone()
     {
         // add $phone
-        $phone = $this->phone;
-        $this->object->addPhone($phone); // à signaler Organism.php setOrganism() vs setPhoneType()
+        $phone = $this->organismPhone;
+        $this->object->addPhone($phone);
         $this->assertContains($phone, $this->object->getPhones());
 
         // testing hasPhone(Phone $phone) return bool
@@ -487,8 +490,7 @@ class OrganismTest extends TestCase
      */
     public function testSetFamilyContact()
     {
-        $familyContact = true;
-        $this->object->setFamilyContact($familyContact);
+        $this->object->setFamilyContact(true);
         $this->assertEquals(true, $this->object->getFamilyContact());
     }
 

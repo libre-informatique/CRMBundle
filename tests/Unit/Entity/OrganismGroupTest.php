@@ -77,36 +77,18 @@ class OrganismGroupTest extends TestCase
     }
 
     /**
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::addRole
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::removeRole
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getRoles
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setRoles
      */
-    public function testGetRoles()
-    {
-        $role = 'fireman';
-        $this->object->setRoles($this->roles);
-        $this->object->getRoles()->add($role);
-        $this->assertContains('fireman', $this->object->getRoles());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::addRole
-     */
-    public function testAddRole()
-    {
-        $role = $this->mockRole;
-        $this->object->addRole($role)->getRoles();
-        $this->assertEquals(1, $this->object->getRoles()->count());
-    }
-
-    /**
-     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::removeRole
-     */
     public function testRemoveRole()
     {
+        // add $role
         $this->object->addRole($this->mockRole);
         $test = $this->object->getRoles();
         $this->assertEquals(1, $test->count());
-
+        // remove $role
         $test = $this->object->removeRole($this->mockRole)->getRoles();
         $this->assertEquals(0, $test->count());
 
@@ -123,8 +105,7 @@ class OrganismGroupTest extends TestCase
     public function test__toString()
     {
         // __toString return $this->getId()
-        $id = 'id';
-        $this->object->setId($id);
+        $this->object->setId('id');
         $this->assertEquals('id', $this->object->__toString());
     }
 }

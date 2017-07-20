@@ -67,10 +67,8 @@ class CircleTest extends TestCase
      */
     public function testSetTranslatable()
     {
-        $translatable = false;
-        $this->object->setTranslatable($translatable);
-        $test = $this->object->isTranslatable();
-        $this->assertEquals(false, $test);
+        $this->object->setTranslatable(false);
+        $this->assertEquals(false, $this->object->isTranslatable());
     }
 
     /**
@@ -79,10 +77,8 @@ class CircleTest extends TestCase
      */
     public function testSetEditable()
     {
-        $editable = true;
-        $this->object->setEditable($editable);
-        $test = $this->object->isEditable();
-        $this->assertEquals(true, $test);
+        $this->object->setEditable(true);
+        $this->assertEquals(true, $this->object->isEditable());
     }
 
     /**
@@ -92,15 +88,16 @@ class CircleTest extends TestCase
      */
     public function testAddPosition()
     {
-        $position = $this->mockPosition;
-        $this->object->addPosition($position);
-
-        $position_1 = $this->mockPosition;
-        $this->object->addPosition($position_1);
+        // add $position1
+        $position1 = $this->mockPosition;
+        $this->object->addPosition($position1);
+        // add $position2
+        $position2 = $this->mockPosition;
+        $this->object->addPosition($position2);
 
         $this->assertEquals(2, $this->object->countPositions());
-
-        $this->object->removePosition($position_1);
+        // remove $position1
+        $this->object->removePosition($position1);
 
         $this->assertEquals(1, $this->object->countPositions());
     }
@@ -112,13 +109,10 @@ class CircleTest extends TestCase
      */
     public function testAddOrganism()
     {
-        $organism = $this->mockOrganism;
-        $this->object->addOrganism($organism);
-
+        $this->object->addOrganism($this->mockOrganism);
         $this->assertEquals(1, $this->object->countOrganisms());
 
-        $this->object->removeOrganism($organism);
-
+        $this->object->removeOrganism($this->mockOrganism);
         $this->assertEquals(0, $this->object->countOrganisms());
     }
 
@@ -130,12 +124,10 @@ class CircleTest extends TestCase
     public function test__toString()
     {
         // __toString() return (string) sprintf('%s %s', $this->code, $this->name)
-        $code = '45G';
-        $this->object->setCode($code);
+        $this->object->setCode('45G');
         $this->object->getCode();
 
-        $name = 'foo';
-        $this->object->setName($name);
+        $this->object->setName('foo');
         $this->object->getName();
         $this->assertEquals('45G foo', $this->object->__toString());
     }
