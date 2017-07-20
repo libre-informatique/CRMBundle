@@ -231,7 +231,6 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
         } else {
             return (string) $this->getName();
         }
-
     }
 
     /**

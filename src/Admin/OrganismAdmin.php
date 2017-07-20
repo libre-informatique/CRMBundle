@@ -114,7 +114,6 @@ class OrganismAdmin extends CoreAdmin
                 $showTabs['show_tab_organizations']['label'] = 'show_tab_organizations';
                 $showTabs['show_tab_organizations']['name'] = 'show_tab_organizations';
                 $showTabs['show_tab_organizations']['class'] = $showTabs['show_tab_organizations']['class'] . ' countable-tab count-organizations';
-
             } else {
                 $mapper->remove('title');
                 $mapper->remove('firstname');
