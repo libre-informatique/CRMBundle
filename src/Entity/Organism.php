@@ -196,7 +196,7 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
         $this->circles = new ArrayCollection();
         $this->positions = new ArrayCollection();
         $this->phones = new ArrayCollection();
-        $this->addresses = new ArrayCollection
+        $this->addresses = new ArrayCollection();
         $this->individuals = new ArrayCollection();
         $this->organizations = new ArrayCollection();
         $this->initOuterExtendedClasses();
