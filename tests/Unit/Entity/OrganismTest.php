@@ -15,6 +15,11 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Organism;
 use Doctrine\Common\Collections\ArrayCollection;
+use Librinfo\CRMBundle\Entity\Position;
+use Librinfo\CRMBundle\Entity\Phone;
+use Librinfo\CRMBundle\Entity\OrganismPhone;
+use Librinfo\CRMBundle\Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class OrganismTest extends TestCase
 {
@@ -22,10 +27,18 @@ class OrganismTest extends TestCase
      * @var Organism
      */
     protected $object;
+    protected $category;
+    protected $position;
+    protected $phone;
+    protected $organismPhone;
 
     protected function setUp()
     {
         $this->object = new Organism();
+        $this->category = new Category();
+        $this->position = new Position();
+        $this->phone = $this->getMockForAbstractClass(Phone::class);
+        $this->organismPhone = new OrganismPhone();
     }
 
     protected function tearDown()
@@ -210,5 +223,241 @@ class OrganismTest extends TestCase
     public function testIsPersonal()
     {
         $this->assertFalse($this->object->isPersonal());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setUrl
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getUrl
+     */
+    public function testSetUrl()
+    {
+        $this->object->setUrl('toto');
+        $this->assertEquals('toto', $this->object->getUrl());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setAdministrativeNumber
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getAdministrativeNumber
+     */
+    public function testSetAdministrativeNumber()
+    {
+        $this->object->setAdministrativeNumber('foo');
+        $this->assertEquals('foo', $this->object->getAdministrativeNumber());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCustomerCode
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCustomerCode
+     *
+     * @todo   Implement testGetCustomerCode().
+     */
+    public function testGetCustomerCode()
+    {
+        $this->object->setCustomerCode('moo');
+        $this->assertEquals('moo', $this->object->getCustomerCode());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setSupplierCode
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getSupplierCode
+     */
+    public function testSetSupplierCode()
+    {
+        $this->object->setSupplierCode('boo');
+        $this->assertEquals('boo', $this->object->getSupplierCode());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setIban
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIban
+     */
+    public function testSetIban()
+    {
+        $this->object->setIban('to');
+        $this->assertEquals('to', $this->object->getIban());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setVat
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getVat
+     */
+    public function testSetVat()
+    {
+        $this->object->setVat('rol');
+        $this->assertEquals('rol', $this->object->getVat());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setAlert
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getAlert
+     */
+    public function testSetAlert()
+    {
+        $this->object->setAlert('to');
+        $this->assertEquals('to', $this->object->getAlert());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setActive
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getActive
+     */
+    public function testSetActive()
+    {
+        $this->object->setActive(true);
+        $this->assertEquals(true, $this->object->getActive());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCatalogueSent
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCatalogueSent
+     */
+    public function testSetCatalogueSent()
+    {
+        $this->object->setCatalogueSent(true);
+        $this->assertEquals(true, $this->object->getCatalogueSent());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setCatalogueSendMean
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getCatalogueSendMean
+     */
+    public function testSetCatalogueSendMean()
+    {
+        $this->object->setCatalogueSendMean(true);
+        $this->assertEquals(true, $this->object->getCatalogueSendMean());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setSource
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getSource
+     */
+    public function testSetSource()
+    {
+        $this->object->setSource('poo');
+        $this->assertEquals('poo', $this->object->getSource());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setDefaultPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getDefaultPhone
+     */
+    public function testSetDefaultPhone()
+    {
+        $this->object->setDefaultPhone($this->organismPhone);
+        $this->assertEquals($this->organismPhone, $this->object->getDefaultPhone());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addOrganization
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removeOrganization
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getOrganizations
+     */
+    public function testRemoveOrganization()
+    {
+        // testing addOrganization($this->position)
+        $this->object->addOrganization($this->position);
+        $this->assertContains($this->position, $this->object->getOrganizations());
+
+        // testing removeOrganization($this->position)
+        $this->object->removeOrganization($this->position);
+        $this->assertNotContains($this->position, $this->object->getOrganizations());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removeIndividual
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getIndividuals
+     */
+    public function testRemoveIndividual()
+    {
+        // testing addIndividual($this->position)
+        $this->object->addIndividual($this->position);
+        $this->assertContains($this->position, $this->object->getIndividuals());
+
+        // testing removeIndividual($this->position)
+        $this->object->removeIndividual($this->position);
+        $this->assertNotContains($this->position, $this->object->getIndividuals());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::addPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::removePhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::hasPhone
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getPhones
+     */
+    public function testRemovePhone()
+    {
+        // add $phone
+        $phone = $this->organismPhone;
+        $this->object->addPhone($phone);
+        $this->assertContains($phone, $this->object->getPhones());
+
+        // testing hasPhone(Phone $phone) return bool
+        $has = $this->object->hasPhone($phone);
+        $this->assertContains($has, $this->object->getPhones());
+
+        // remove $phone
+        $this->object->removePhone($phone);
+        $this->assertNotContains($phone, $this->object->getPhones());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFirstCatalogueSentDate
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFirstCatalogueSentDate
+     */
+    public function testSetFirstCatalogueSentDate()
+    {
+        $this->object->setFirstCatalogueSentDate(new Assert\DateTime());
+        $this->assertEquals(new Assert\DateTime(), $this->object->getFirstCatalogueSentDate());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setLastCatalogueSentDate
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getLastCatalogueSentDate
+     */
+    public function testSetLastCatalogueSentDate()
+    {
+        $this->object->setLastCatalogueSentDate(new Assert\DateTime());
+        $this->assertEquals(new Assert\DateTime(), $this->object->getLastCatalogueSentDate());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFamilyContact
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFamilyContact
+     */
+    public function testSetFamilyContact()
+    {
+        $this->object->setFamilyContact(true);
+        $this->assertEquals(true, $this->object->getFamilyContact());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::setFlashOnControl
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFlashOnControl
+     */
+    public function testSetFlashOnControl()
+    {
+        $this->object->setFlashOnControl('xx');
+        $this->assertEquals('xx', $this->object->getFlashOnControl());
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\Organism::getFulltextName
+     */
+    public function testGetFulltextName()
+    {
+        // if !$this->isIndividual()
+        $this->object->setIsIndividual(false);
+        $this->object->setName('coo');
+        $this->object->getName();
+        $this->assertEquals('COO', $this->object->getFulltextName());
+
+        // if $this->isIndividual()
+        $this->object->setIsIndividual(true);
+        $this->object->setLastname('Zoro');
+        $this->object->getLastname();
+        $this->object->setFirstname('Dooo');
+        $this->object->getFirstname();
+        $this->assertEquals('Dooo ZORO', $this->object->getFulltextName());
     }
 }
