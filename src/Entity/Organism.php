@@ -222,11 +222,16 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
 
     public function __toString()
     {
-        return sprintf(
-            '%s %s',
-            $this->getFirstname(),
-            $this->getName()
-        );
+        if ($this->isIndividual()) {
+            return sprintf(
+                '%s %s',
+                $this->getFirstname(),
+                $this->getLastname()
+            );
+        } else {
+            return (string) $this->getName();
+        }
+
     }
 
     /**

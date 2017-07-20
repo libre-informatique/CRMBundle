@@ -1,5 +1,5 @@
 services:
-    
+
     librinfo_crm.admin.organism_embedded:
         class: Librinfo\CRMBundle\Admin\OrganismEmbeddedAdmin
         arguments: [~, Librinfo\CRMBundle\Entity\Organism, BlastCoreBundle:CRUD]
@@ -22,7 +22,7 @@ services:
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:OrganismAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
-            
+
     librinfo_crm.admin.organization:
         class: Librinfo\CRMBundle\Admin\OrganizationAdmin
         arguments: [~, Librinfo\CRMBundle\Entity\Organism, LibrinfoCRMBundle:OrganismAdmin]
@@ -35,7 +35,7 @@ services:
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:OrganismAdmin:edit.html.twig]]
             - [ setTemplate, [show, LibrinfoCRMBundle:OrganismAdmin:show.html.twig]]
-            
+
     librinfo_crm.admin.organism:
         class: Librinfo\CRMBundle\Admin\OrganismAdmin
         arguments: [~, Librinfo\CRMBundle\Entity\Organism, LibrinfoCRMBundle:OrganismAdmin]
@@ -164,5 +164,3 @@ services:
               label_translator_strategy: blast_core.label.strategy.librinfo
         calls:
             - [ setTemplate, [edit, LibrinfoCRMBundle:AddressAdmin:edit.html.twig]]
-
-

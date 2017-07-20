@@ -258,6 +258,7 @@ parameters:
                                     class: columns-2 multiple-checkbox
                                 expanded: true
                                 multiple: true
+                                required: false
                                 blast_choices:
                                     - Particulier
                                     - Revendeurs
@@ -418,6 +419,7 @@ parameters:
                         type: doctrine_orm_callback
                         callback: [Librinfo\CRMBundle\Admin\OrganismAdmin, filterNameCallback]
                     active: ~
+                    isIndividual: ~
                     # firstname: ~
                     # shortname: ~
                     # name:
