@@ -915,7 +915,7 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
     /**
      * {@inheritdoc}
      */
-    public function setDefaultPhone(Phone $defaultPhone = null)
+    public function setDefaultPhone(OrganismPhone $defaultPhone = null)
     {
         $this->defaultPhone = $defaultPhone;
         if (null !== $defaultPhone) {
