@@ -1,6 +1,7 @@
 # SymfonyLibrinfoCRMBundle
 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/edc0cd7be10a41ea87b03d7922908cfe)](https://www.codacy.com/app/BlastCI/CRMBundle?utm_source=github.com&utm_medium=referral&utm_content=libre-informatique/CRMBundle&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/libre-informatique/CRMBundle.svg?branch=master)](https://travis-ci.org/libre-informatique/CRMBundle)
 [![Coverage Status](https://coveralls.io/repos/github/libre-informatique/CRMBundle/badge.svg?branch=master)](https://coveralls.io/github/libre-informatique/CRMBundle?branch=master)
 [![License](https://img.shields.io/github/license/libre-informatique/CRMBundle.svg?style=flat-square)](./LICENCE.md)
