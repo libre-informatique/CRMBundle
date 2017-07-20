@@ -23,13 +23,27 @@ class OrganismGroupTest extends TestCase
      */
     protected $object;
 
+    protected $roles;
+
+    protected $mockRole;
+
     protected function setUp()
     {
         $this->object = new OrganismGroup();
+        $this->roles = new ArrayCollection();
+        $this->mockRole = $this->createMock('\Librinfo\CRMBundle\Entity\Role');
     }
 
     protected function tearDown()
     {
+    }
+
+    /**
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::__construct()
+     */
+    public function test__construct()
+    {
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getRoles());
     }
 
     /**
@@ -38,6 +52,10 @@ class OrganismGroupTest extends TestCase
      */
     public function testGetContact()
     {
+        $contact = 'toto';
+        $this->object->setContact($contact);
+        $this->assertContains('toto', $this->object->getContact());
+
         $contact = 'contact';
         $this->object->setContact($contact);
         $this->assertContains($contact, $this->object->getContact());
@@ -49,17 +67,31 @@ class OrganismGroupTest extends TestCase
      */
     public function testGetOrganism()
     {
+        $organism = 'clps';
+        $this->object->setOrganism($organism);
+        $this->assertEquals('clps', $this->object->getOrganism());
+
         $organism = 'organism';
         $this->object->setOrganism($organism);
         $this->assertEquals($organism, $this->object->getOrganism());
     }
 
     /**
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::addRole
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::removeRole
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getRoles
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setRoles
      */
-    public function testGetRoles()
+    public function testRemoveRole()
     {
+        // add $role
+        $this->object->addRole($this->mockRole);
+        $test = $this->object->getRoles();
+        $this->assertEquals(1, $test->count());
+        // remove $role
+        $test = $this->object->removeRole($this->mockRole)->getRoles();
+        $this->assertEquals(0, $test->count());
+
         $roles = new ArrayCollection();
         $role = 'toto';
         $this->object->setRoles($roles);
@@ -73,8 +105,7 @@ class OrganismGroupTest extends TestCase
     public function test__toString()
     {
         // __toString return $this->getId()
-        $id = 'id';
-        $this->object->setId($id);
+        $this->object->setId('id');
         $this->assertEquals('id', $this->object->__toString());
     }
 }
