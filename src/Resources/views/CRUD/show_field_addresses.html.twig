@@ -18,8 +18,11 @@
                         <th colspan="2">
                             {% block address %}
                                 {% if address_admin.isGranted('SHOW') %}
-                                    <a href="{{ address_admin.generateObjectUrl('show', address) }}">
-                                    </a>
+
+                                    {#
+                                        <a href="{{ address_admin.generateObjectUrl('show', address) }}">
+                                        </a>
+                                    #}
                                 {% else %}
                                     {{ address|render_relation_element(elements['addresses']) }}
                                 {% endif %}
