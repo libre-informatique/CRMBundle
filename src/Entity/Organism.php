@@ -168,6 +168,11 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
     /**
      * @var string
      */
+    private $catalogue_type;
+
+    /**
+     * @var string
+     */
     private $source;
 
     /**
@@ -1053,5 +1058,25 @@ class Organism implements VCardableInterface, OrganismExtensionInterface
         }
 
         return sprintf('%s %s', $this->getFirstname(), $this->getLastName());
+    }
+
+    /**
+     * @return string
+     */
+    public function getCatalogueType()
+    {
+        return $this->catalogue_type;
+    }
+
+    /**
+     * @param string catalogue_type
+     *
+     * @return self
+     */
+    public function setCatalogueType($catalogue_type)
+    {
+        $this->catalogue_type = $catalogue_type;
+
+        return $this;
     }
 }

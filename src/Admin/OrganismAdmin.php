@@ -27,6 +27,25 @@ class OrganismAdmin extends CoreAdmin
 {
     use HandlesRelationsAdmin;
 
+    public function createQuery($context = 'list')
+    {
+        $proxyQuery = parent::createQuery('list');
+
+        $qb = $proxyQuery->getQueryBuilder();
+
+        // $qb->addSelect(' AS HIDDEN fulltextname');
+        $qb->orderBy('CONCAT_WS(\'_\', o.firstname,o.lastname,o.name)', 'ASC');
+        // $qb->addOrderBy('o.name', 'ASC');
+
+        // dump($qb);die;
+
+        // $proxyQuery->addOrderBy('o.firstname', 'ASC');
+        // $proxyQuery->addOrderBy('o.lastname', 'ASC');
+        // $proxyQuery->addOrderBy('o.name', 'ASC');
+
+        return $proxyQuery;
+    }
+
     protected function configureRoutes(RouteCollection $collection)
     {
         parent::configureRoutes($collection);
@@ -343,5 +362,18 @@ class OrganismAdmin extends CoreAdmin
                 }
             }
         }
+    }
+
+    public static function filterNameCallback($queryBuilder, $alias, $field, $value)
+    {
+        if (!$value['value']) {
+            return;
+        }
+        $queryBuilder->orWhere($queryBuilder->expr()->like($alias . '.name', ':value'));
+        $queryBuilder->orWhere($queryBuilder->expr()->like($alias . '.firstname', ':value'));
+        $queryBuilder->orWhere($queryBuilder->expr()->like($alias . '.lastname', ':value'));
+        $queryBuilder->setParameter('value', $value['value']);
+
+        return true;
     }
 }
