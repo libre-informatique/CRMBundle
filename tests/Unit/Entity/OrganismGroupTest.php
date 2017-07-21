@@ -22,10 +22,14 @@ class OrganismGroupTest extends TestCase
      * @var OrganismGroup
      */
     protected $object;
+    protected $roles;
+    protected $mockRole;
 
     protected function setUp()
     {
         $this->object = new OrganismGroup();
+        $this->roles = new ArrayCollection();
+        $this->mockRole = $this->createMock('\Librinfo\CRMBundle\Entity\Role');
     }
 
     protected function tearDown()
@@ -57,14 +61,24 @@ class OrganismGroupTest extends TestCase
     /**
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::getRoles
      * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::setRoles
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::addRole
+     * @covers \Librinfo\CRMBundle\Entity\OrganismGroup::removeRole
      */
     public function testGetRoles()
     {
-        $roles = new ArrayCollection();
-        $role = 'toto';
-        $this->object->setRoles($roles);
-        $this->object->getRoles()->add($role);
-        $this->assertContains('toto', $this->object->getRoles());
+        $role1 = $this->mockRole;
+        $this->object->setRoles($this->roles);
+        $this->object->getRoles()->add($role1);
+        $this->assertContains($role1, $this->object->getRoles());
+
+        // testing addRole($this->mockRole)
+        $role2 = $this->mockRole;
+        $this->object->addRole($role2);
+        $this->assertContains($role2, $this->object->getRoles());
+
+        // testing removeRole($role1)
+        $this->object->removeRole($role1);
+        $this->assertNotContains($role1, $this->object->getRoles());
     }
 
     /**
