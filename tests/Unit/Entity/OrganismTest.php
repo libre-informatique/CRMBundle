@@ -79,12 +79,8 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
-        $firstname = 'firstname';
-        $name = 'name';
-        $this->object->setFirstname($firstname);
-        $this->object->setName($name);
-        $this->object->getFirstname();
-        $this->object->getName();
+        $this->object->setFirstname('firstname');
+        $this->object->setName('name');
         $this->assertEquals('Firstname NAME', $this->object->__toString());
     }
 
