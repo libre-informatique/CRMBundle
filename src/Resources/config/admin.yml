@@ -1,3 +1,6 @@
+parameters:
+    librinfo_crm.admin.address.entity.class: Librinfo\CRMBundle\Entity\Address
+
 services:
 
     librinfo_crm.admin.organism_embedded:
@@ -155,7 +158,7 @@ services:
 
     librinfo_crm.admin.address:
         class: Librinfo\CRMBundle\Admin\AddressAdmin
-        arguments: [~, Librinfo\CRMBundle\Entity\Address, BlastCoreBundle:CRUD]
+        arguments: [~, %librinfo_crm.admin.address.entity.class%, BlastCoreBundle:CRUD]
         tags:
             - name: sonata.admin
               manager_type: orm
