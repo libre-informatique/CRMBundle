@@ -54,16 +54,12 @@ class CategoryTest extends TestCase
      */
     public function testAddOrganism()
     {
-        // get Organism
-        $this->object->getOrganisms();
-        $this->assertEquals(0, $this->object->getOrganisms()->count());
-
         // addOrganism($this->mockOrganism)
         $this->object->addOrganism($this->mockOrganism);
-        $this->assertEquals(1, $this->object->getOrganisms()->count());
+        $this->assertContains($this->mockOrganism, $this->object->getOrganisms());
 
         // removeOrganism($this->mockOrganism)
         $this->object->removeOrganism($this->mockOrganism);
-        $this->assertEquals(0, $this->object->getOrganisms()->count());
+        $this->assertNotContains($this->mockOrganism, $this->object->getOrganisms());
     }
 }

@@ -61,30 +61,24 @@ class SupplierCodeGeneratorTest extends TestCase
     }
 
     /**
-     * @covers \Librinfo\CRMBundle\CodeGenerator\SupplierCodeGenerator::setEntityManager
-     */
-    public function testSetEntityManager()
-    {
-        $this->assertEquals($this->mockEntityManager, $this->object::setEntityManager($this->mockEntityManager));
-    }
-
-    /**
      * @covers \Librinfo\CRMBundle\CodeGenerator\SupplierCodeGenerator::generate
      */
     public function testGenerate()
     {
-        // return null is !$organism->isSupplier()
+        // return null if isSupplier false
         $this->assertEquals(null, $this->object->generate($this->organism));
 
-        //if $organism->isSupplier()
+        // return '000001 if isSupplier true and getSupplierCode null
         $this->organism->setIsSupplier(true);
         $this->object::setEntityManager($this->mockEntityManager);
         $this->mockEntityManager->getRepository($this->organism);
-        // if $organism->getSupplierCode() === null
         $this->organism->setSupplierCode(null);
         $this->assertEquals('000001', $this->object::generate($this->organism));
 
-        //if $organism->getSupplierCode() !== null , return $organism->getCustomerCode()
+        //return getCustomerCode if isSupplier true and getSupplierCode not null
+        $this->organism->setIsSupplier(true);
+        $this->object::setEntityManager($this->mockEntityManager);
+        $this->mockEntityManager->getRepository($this->organism);
         $this->organism->setSupplierCode('foo');
         $this->organism->setCustomerCode('code');
         $this->assertEquals('code', $this->object::generate($this->organism));
