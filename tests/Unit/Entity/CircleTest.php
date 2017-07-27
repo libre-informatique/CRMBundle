@@ -89,20 +89,19 @@ class CircleTest extends TestCase
         // add $position1
         $position1 = $this->mockPosition;
         $this->object->addPosition($position1);
-        $this->assertContains($position1,$this->object->getPositions());
+        $this->assertContains($position1, $this->object->getPositions());
 
         // add $position2
         $position2 = $this->mockPosition;
         $this->object->addPosition($position2);
-        $this->assertContains($position2,$this->object->getPositions());
-
+        $this->assertContains($position2, $this->object->getPositions());
 
         // countPositions()
         $this->assertEquals(2, $this->object->countPositions());
 
         // remove $position1
         $this->object->removePosition($position1);
-        $this->assertNotContains(array($position1),$this->object->getPositions());
+        $this->assertNotContains(array($position1), $this->object->getPositions());
         $this->assertEquals(1, $this->object->countPositions());
     }
 
@@ -115,14 +114,14 @@ class CircleTest extends TestCase
     {
         // addOrganism($this->mockOrganism)
         $this->object->addOrganism($this->mockOrganism);
-        $this->assertContains($this->mockOrganism,$this->object->getOrganisms());
+        $this->assertContains($this->mockOrganism, $this->object->getOrganisms());
 
         // countOrganisms()
         $this->assertEquals(1, $this->object->countOrganisms());
 
         // removeOrganism($this->mockOrganism)
         $this->object->removeOrganism($this->mockOrganism);
-        $this->assertNotContains($this->mockOrganism,$this->object->getOrganisms());
+        $this->assertNotContains($this->mockOrganism, $this->object->getOrganisms());
         $this->assertEquals(0, $this->object->countOrganisms());
     }
 

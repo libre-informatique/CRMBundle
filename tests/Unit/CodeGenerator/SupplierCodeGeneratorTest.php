@@ -15,7 +15,6 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\CodeGenerator\SupplierCodeGenerator;
 use Librinfo\CRMBundle\Entity\Organism;
-use Doctrine\ORM\AbstractQuery;
 
 class SupplierCodeGeneratorTest extends TestCase
 {
@@ -39,7 +38,7 @@ class SupplierCodeGeneratorTest extends TestCase
         $this->mockQueryBuilder = $this->createMock("\Doctrine\ORM\QueryBuilder");
 
         $this->mockQuery = $this->getMockForAbstractClass(
-            $originalClassName = AbstractQuery::class,
+            $originalClassName = "\Doctrine\ORM\AbstractQuery",
             $arguments = array(),
             $mockClassName = '',
             $callOriginalConstructor = false,
@@ -77,13 +76,15 @@ class SupplierCodeGeneratorTest extends TestCase
         $this->assertEquals('000001', $this->object::generate($this->organism));
 
         //return getCustomerCode if isSupplier true and getSupplierCode not null
+        $this->organism->setIsSupplier(true);
+        $this->object::setEntityManager($this->mockEntityManager);
+        $this->mockEntityManager->getRepository($this->organism);
         $this->organism->setSupplierCode('foo');
         $this->organism->setCustomerCode('code');
         $this->assertEquals('code', $this->object::generate($this->organism));
     }
 
     /**
-     *
      * @covers \Librinfo\CRMBundle\CodeGenerator\SupplierCodeGenerator::getHelp
      */
     public function testGetHelp()

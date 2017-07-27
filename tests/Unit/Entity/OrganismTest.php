@@ -79,9 +79,16 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
+        // return getFirstname getLastname if isIndividual true
+        $this->object->setIsIndividual(true);
         $this->object->setFirstname('firstname');
+        $this->object->setLastname('lastname');
+        $this->assertEquals('Firstname LASTNAME', $this->object->__toString());
+
+        // return getName if isIndividual false
+        $this->object->setIsIndividual(false);
         $this->object->setName('name');
-        $this->assertEquals('Firstname NAME', $this->object->__toString());
+        $this->assertEquals('NAME', $this->object->__toString());
     }
 
     /**
