@@ -463,4 +463,25 @@ class OrganismTest extends TestCase
         $this->object->getFirstname();
         $this->assertEquals('Dooo ZORO', $this->object->getFulltextName());
     }
+
+    /**
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::addPosition
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::removePosition
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::getPositions
+     */
+    public function testAddPosition()
+    {
+        // init
+      $get = $this->object->getPositions();
+        $pos = $this->position;
+
+      // testing
+      $this->assertInstanceOf(ArrayCollection::class, $get);
+
+        $this->assertInstanceOf(Organism::class, $this->object->addPosition($pos));
+        $this->assertContains($pos, $get);
+
+        $this->assertInstanceOf(Organism::class, $this->object->removePosition($pos));
+        $this->assertNotContains($pos, $get);
+    }
 }

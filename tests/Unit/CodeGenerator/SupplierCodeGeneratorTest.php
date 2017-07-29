@@ -95,4 +95,12 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
        {
            $this->assertEquals('6 digits', $this->object::getHelp());
        }
+
+       /**
+        * @covers \Librinfo\CRMBundle\CodeGenerator\SupplierCodeGenerator::validate
+        */
+       public function testValidate()
+       {
+           $this->assertEquals(false, $this->object::validate('', $this->organism = null));
+       }
  }
