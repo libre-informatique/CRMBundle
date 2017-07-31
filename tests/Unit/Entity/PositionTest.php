@@ -14,6 +14,8 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Position;
+use Librinfo\CRMBundle\Entity\Circle;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PositionTest extends TestCase
 {
@@ -103,5 +105,26 @@ class PositionTest extends TestCase
     public function testIsPersonal()
     {
         $this->assertEquals(false, $this->object->isPersonal());
+    }
+
+    /**
+     * @use \Librinfo\CRMBundle\Entity\Position\Circlable::addCircle
+     * @use \Librinfo\CRMBundle\Entity\Position\Circlable::removeCircle
+     * @use \Librinfo\CRMBundle\Entity\Position\Circlable::getCircles()
+     */
+    public function testGetCircles()
+    {
+        // init
+      $get = $this->object->getCircles();
+        $circle = new Circle();
+
+      // testing
+      $this->assertInstanceOf(ArrayCollection::class, $get);
+
+        $this->assertInstanceOf(Position::class, $this->object->addCircle($circle));
+        $this->assertContains($circle, $get);
+
+        $this->assertInstanceOf(Position::class, $this->object->removeCircle($circle));
+        $this->assertNotContains($circle, $get);
     }
 }

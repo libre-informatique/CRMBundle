@@ -79,13 +79,16 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
-        $firstname = 'firstname';
-        $name = 'name';
-        $this->object->setFirstname($firstname);
-        $this->object->setName($name);
-        $this->object->getFirstname();
-        $this->object->getName();
-        $this->assertEquals('Firstname NAME', $this->object->__toString());
+        // return getFirstname getLastname if isIndividual true
+        $this->object->setIsIndividual(true);
+        $this->object->setFirstname('firstname');
+        $this->object->setLastname('lastname');
+        $this->assertEquals('Firstname LASTNAME', $this->object->__toString());
+
+        // return getName if isIndividual false
+        $this->object->setIsIndividual(false);
+        $this->object->setName('name');
+        $this->assertEquals('NAME', $this->object->__toString());
     }
 
     /**
@@ -459,5 +462,26 @@ class OrganismTest extends TestCase
         $this->object->setFirstname('Dooo');
         $this->object->getFirstname();
         $this->assertEquals('Dooo ZORO', $this->object->getFulltextName());
+    }
+
+    /**
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::addPosition
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::removePosition
+     * @use \Librinfo\CRMBundle\Entity\Organism\Positionable::getPositions
+     */
+    public function testAddPosition()
+    {
+        // init
+      $get = $this->object->getPositions();
+        $pos = $this->position;
+
+      // testing
+      $this->assertInstanceOf(ArrayCollection::class, $get);
+
+        $this->assertInstanceOf(Organism::class, $this->object->addPosition($pos));
+        $this->assertContains($pos, $get);
+
+        $this->assertInstanceOf(Organism::class, $this->object->removePosition($pos));
+        $this->assertNotContains($pos, $get);
     }
 }
