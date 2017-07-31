@@ -115,11 +115,11 @@ class PositionTest extends TestCase
     public function testGetCircles()
     {
         // init
-      $get = $this->object->getCircles();
+        $get = $this->object->getCircles();
         $circle = new Circle();
 
-      // testing
-      $this->assertInstanceOf(ArrayCollection::class, $get);
+        // testing
+        $this->assertInstanceOf(ArrayCollection::class, $get);
 
         $this->assertInstanceOf(Position::class, $this->object->addCircle($circle));
         $this->assertContains($circle, $get);
