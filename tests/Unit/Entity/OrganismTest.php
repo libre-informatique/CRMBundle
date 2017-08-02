@@ -64,14 +64,14 @@ class OrganismTest extends TestCase
     public function test__clone()
     {
         // init
-       $id = 'id';
+        $id = 'id';
         $this->object->setId($id);
        // test methods
-       $clone = clone $this->object;
+        $clone = clone $this->object;
         $this->assertNull($clone->getId());
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
        //test object
-       $this->assertEquals($id, $this->object->getId());
+        $this->assertEquals($id, $this->object->getId());
     }
 
     /**
@@ -79,13 +79,23 @@ class OrganismTest extends TestCase
      */
     public function test__toString()
     {
-        $firstname = 'firstname';
-        $name = 'name';
+        $firstname = 'foo';
+        $name = 'bar';
+
+        $this->object->setIsIndividual(true);
         $this->object->setFirstname($firstname);
+        $this->object->setLastName($name);
+        $this->assertEquals(
+            'Foo BAR',
+            (string) $this->object
+        );
+
+        $this->object->setIsIndividual(false);
         $this->object->setName($name);
-        $this->object->getFirstname();
-        $this->object->getName();
-        $this->assertEquals('Firstname NAME', $this->object->__toString());
+        $this->assertEquals(
+            'BAR',
+            (string) $this->object
+        );
     }
 
     /**
