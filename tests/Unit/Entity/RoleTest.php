@@ -68,7 +68,7 @@ class RoleTest extends TestCase
     public function test__toString()
     {
         // return getName
-      $this->object->setName('goo');
+        $this->object->setName('goo');
         $this->assertEquals('goo', $this->object->__toString());
     }
 }

@@ -44,20 +44,20 @@ class ProvinceTest extends TestCase
     public function testSetCode()
     {
         // init
-       $test = 'foo';
+        $test = 'foo';
         $country = $this->createMock("\Librinfo\CRMBundle\Entity\Country");
 
-       // testing setters
-       $this->assertInstanceOf(Province::class,
-       $this->object->setCode($test),
-       $this->object->setName($test),
-       $this->object->setAbbreviation($test),
-       $this->object->setCountry($country));
+        // testing setters
+        $this->assertInstanceOf(Province::class,
+        $this->object->setCode($test),
+        $this->object->setName($test),
+        $this->object->setAbbreviation($test),
+        $this->object->setCountry($country));
 
-       // testing getters
-       $this->assertEquals($this->object->getCode(),
-       $this->object->getName(),
-       $this->object->getAbbreviation());
+        // testing getters
+        $this->assertEquals($this->object->getCode(),
+        $this->object->getName(),
+        $this->object->getAbbreviation());
         $this->assertEquals($country, $this->object->getCountry());
     }
 }
