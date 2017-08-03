@@ -95,18 +95,17 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
      public function testGenerate()
      {
          //** return '000001' if IsCustomer true and getCustomerCode null
-       $this->organism->setIsCustomer(true);
+         $this->organism->setIsCustomer(true);
          $this->object::setEntityManager($this->mockEntityManager);
-         $this->mockEntityManager->getRepository($this->organism);
          $this->organism->setCustomerCode(null);
          $this->assertEquals('000001', $this->object::generate($this->organism));
 
-       // return getCustomerCode if IsCustomer true getCustomerCode not null
-       $this->organism->setCustomerCode('ddd');
+         // return getCustomerCode if IsCustomer true getCustomerCode not null
+         $this->organism->setCustomerCode('ddd');
          $this->assertEquals('ddd', $this->object::generate($this->organism));
 
-       //** return null if IsCustomer false
-       $this->organism->setIsCustomer(false);
+         //** return null if IsCustomer false
+         $this->organism->setIsCustomer(false);
          $this->assertEquals(null, $this->object::generate($this->organism));
      }
 

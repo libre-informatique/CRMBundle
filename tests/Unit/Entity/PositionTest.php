@@ -15,7 +15,6 @@ namespace Librinfo\CRMBundle\Entity\Test\Unit;
 use PHPUnit\Framework\TestCase;
 use Librinfo\CRMBundle\Entity\Position;
 use Librinfo\CRMBundle\Entity\Circle;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class PositionTest extends TestCase
 {
@@ -118,13 +117,12 @@ class PositionTest extends TestCase
         $get = $this->object->getCircles();
         $circle = new Circle();
 
-        // testing
-        $this->assertInstanceOf(ArrayCollection::class, $get);
-
-        $this->assertInstanceOf(Position::class, $this->object->addCircle($circle));
+        // testing add $circle
+        $this->object->addCircle($circle);
         $this->assertContains($circle, $get);
 
-        $this->assertInstanceOf(Position::class, $this->object->removeCircle($circle));
+        // testing remove $circle
+        $this->object->removeCircle($circle);
         $this->assertNotContains($circle, $get);
     }
 }

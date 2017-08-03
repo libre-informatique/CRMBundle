@@ -472,16 +472,15 @@ class OrganismTest extends TestCase
     public function testAddPosition()
     {
         // init
-      $get = $this->object->getPositions();
+        $get = $this->object->getPositions();
         $pos = $this->position;
 
-      // testing
-      $this->assertInstanceOf(ArrayCollection::class, $get);
-
-        $this->assertInstanceOf(Organism::class, $this->object->addPosition($pos));
+        // testing add $pos
+        $this->object->addPosition($pos);
         $this->assertContains($pos, $get);
 
-        $this->assertInstanceOf(Organism::class, $this->object->removePosition($pos));
+        // testing remove $pos
+        $this->object->removePosition($pos);
         $this->assertNotContains($pos, $get);
     }
 }

@@ -40,26 +40,18 @@ class RoleTest extends TestCase
       * @covers \Librinfo\CRMBundle\Entity\Role::getContactGroups
       * @covers \Librinfo\CRMBundle\Entity\Role::addContactGroup
       * @covers \Librinfo\CRMBundle\Entity\Role::removeContactGroup
-      * @covers \Librinfo\CRMBundle\Entity\Role::getContactGroups
       */
      public function testGetContactGroups()
      {
-         // init
-         $get = $this->object->getContactGroups();
          $org = new OrganismGroup();
 
-         // setContactGroups
-         $this->assertInstanceOf(Role::class, $this->object->setContactGroups($get));
+         // add ContactGroup
+         $this->object->addContactGroup($org);
+         $this->assertContains($org, $this->object->getContactGroups());
 
-         // add ContactGroup , getContactGroup
-         $this->assertInstanceOf(Role::class, $this->object->addContactGroup($org));
-         $this->assertContains($org, $get);
-         $this->assertEquals(1, $get->count());
-
-         // remove ContactGroup , getContactGroups
+         // remove ContactGroup
          $this->object->removeContactGroup($org);
-         $this->assertNotContains($org, $get);
-         $this->assertEquals(0, $get->count());
+         $this->assertNotContains($org, $this->object->getContactGroups());
      }
 
     /**

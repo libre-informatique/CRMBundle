@@ -75,14 +75,12 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
            // return '000001 if isSupplier true and getSupplierCode null
            $this->organism->setIsSupplier(true);
            $this->object::setEntityManager($this->mockEntityManager);
-           $this->mockEntityManager->getRepository($this->organism);
            $this->organism->setSupplierCode(null);
            $this->assertEquals('000001', $this->object::generate($this->organism));
 
            //return getCustomerCode if isSupplier true and getSupplierCode not null
            $this->organism->setIsSupplier(true);
            $this->object::setEntityManager($this->mockEntityManager);
-           $this->mockEntityManager->getRepository($this->organism);
            $this->organism->setSupplierCode('foo');
            $this->organism->setCustomerCode('code');
            $this->assertEquals('code', $this->object::generate($this->organism));

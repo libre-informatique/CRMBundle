@@ -46,10 +46,10 @@ class CustomerCodeTransformerTest extends TestCase
      */
     public function testReverseTransform()
     {
-        // if preg_match('/^[0-9]+$/', $code)
-        $this->assertEquals('000000', $this->object->reverseTransform('0'));
+        // if $code return
+        $this->assertEquals('000000', $this->object->reverseTransform(0));
 
         // else return trim($code)
-        $this->assertEquals(trim('boo'), $this->object->reverseTransform('boo'));
+        $this->assertEquals('boo', $this->object->reverseTransform('boo'));
     }
 }
