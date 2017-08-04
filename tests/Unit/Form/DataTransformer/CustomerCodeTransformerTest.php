@@ -46,8 +46,8 @@ class CustomerCodeTransformerTest extends TestCase
      */
     public function testReverseTransform()
     {
-        // if $code return
-        $this->assertEquals('000000', $this->object->reverseTransform(0));
+        // if (int)$code , add automatically '' and lead zeros when user submits only digits
+        $this->assertEquals('000045', $this->object->reverseTransform(45));
 
         // else return trim($code)
         $this->assertEquals('boo', $this->object->reverseTransform('boo'));
