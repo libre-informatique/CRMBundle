@@ -42,15 +42,16 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
          $this->mockQueryBuilder = $this->createMock("\Doctrine\ORM\QueryBuilder");
 
          $this->mockQuery = $this->getMockForAbstractClass(
-               $originalClassName = "\Doctrine\ORM\AbstractQuery",
-               $arguments = array(),
-               $mockClassName = '',
-               $callOriginalConstructor = false,
-               $callOriginalClone = true,
-               $callAutoload = true,
-               $mockedMethods = array('getScalarResult'),
-               $cloneArguments = true
-           );
+             $originalClassName = "\Doctrine\ORM\AbstractQuery",
+             $arguments = array(),
+             $mockClassName = '',
+             $callOriginalConstructor = false,
+             $callOriginalClone = true,
+             $callAutoload = true,
+             $mockedMethods = array('getScalarResult'),
+             $cloneArguments = true
+         );
+
          $this->mockEntityManager->method('getRepository')->willReturn($this->mockRepository);
          $this->mockRepository->method('createQueryBuilder')->willReturn($this->mockQueryBuilder);
          $this->mockQueryBuilder->method('select')->willReturn($this->mockQueryBuilder);

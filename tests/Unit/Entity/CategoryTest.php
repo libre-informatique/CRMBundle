@@ -41,10 +41,10 @@ class CategoryTest extends TestCase
     public function test__construct()
     {
         // testing $this->initCollections() with init NesteTreeable treeChildren Collection
-      $this->assertInstanceOf(ArrayCollection::class, $this->object->getTreeChildren());
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getTreeChildren());
 
-      // testing $this->organisms = new ArrayCollection()
-      $this->assertInstanceOf(ArrayCollection::class, $this->object->getOrganisms());
+        // testing $this->organisms = new ArrayCollection()
+        $this->assertInstanceOf(ArrayCollection::class, $this->object->getOrganisms());
     }
 
     /**

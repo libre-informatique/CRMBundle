@@ -37,45 +37,49 @@ namespace Librinfo\CRMBundle\CodeGenerator\Test\Unit;
          $this->object = new CustomerCodeGenerator();
          $this->organism = new Organism();
          $this->mockEntityManager = $this->createMock(
-         $originalClassName = "\Doctrine\ORM\EntityManager",
-         $arguments = array(),
-         $mockClassName = '',
-         $callOriginalConstructor = false,
-         $callOriginalClone = true,
-         $callAutoload = true,
-         $mockedMethods = array('getRepository'),
-         $cloneArguments = true
-       );
+             $originalClassName = "\Doctrine\ORM\EntityManager",
+             $arguments = array(),
+             $mockClassName = '',
+             $callOriginalConstructor = false,
+             $callOriginalClone = true,
+             $callAutoload = true,
+             $mockedMethods = array('getRepository'),
+             $cloneArguments = true
+         );
+
          $this->mockEntityRepository = $this->createMock(
-         $originalClassName = "\Doctrine\ORM\EntityRepository",
-         $arguments = array(),
-         $mockClassName = '',
-         $callOriginalConstructor = false,
-         $callOriginalClone = true,
-         $callAutoload = true,
-         $mockedMethods = array('createQueryBuilder'),
-         $cloneArguments = true
-       );
+             $originalClassName = "\Doctrine\ORM\EntityRepository",
+             $arguments = array(),
+             $mockClassName = '',
+             $callOriginalConstructor = false,
+             $callOriginalClone = true,
+             $callAutoload = true,
+             $mockedMethods = array('createQueryBuilder'),
+             $cloneArguments = true
+         );
+
          $this->mockQueryBuilder = $this->createMock(
-         $originalClassName = "\Doctrine\ORM\QueryBuilder",
-         $arguments = array(),
-         $mockClassName = '',
-         $callOriginalConstructor = false,
-         $callOriginalClone = true,
-         $callAutoload = true,
-         $mockedMethods = array('select', 'andWhere', 'setMaxResults', 'addOrderBy', 'getQuery'),
-         $cloneArguments = true
-       );
+             $originalClassName = "\Doctrine\ORM\QueryBuilder",
+             $arguments = array(),
+             $mockClassName = '',
+             $callOriginalConstructor = false,
+             $callOriginalClone = true,
+             $callAutoload = true,
+             $mockedMethods = array('select', 'andWhere', 'setMaxResults', 'addOrderBy', 'getQuery'),
+             $cloneArguments = true
+         );
+
          $this->mockQuery = $this->getMockForAbstractClass(
-           $originalClassName = "\Doctrine\ORM\AbstractQuery",
-           $arguments = array(),
-           $mockClassName = '',
-           $callOriginalConstructor = false,
-           $callOriginalClone = true,
-           $callAutoload = true,
-           $mockedMethods = array('getScalarResult'),
-           $cloneArguments = true
-       );
+             $originalClassName = "\Doctrine\ORM\AbstractQuery",
+             $arguments = array(),
+             $mockClassName = '',
+             $callOriginalConstructor = false,
+             $callOriginalClone = true,
+             $callAutoload = true,
+             $mockedMethods = array('getScalarResult'),
+             $cloneArguments = true
+         );
+
          $this->mockEntityManager->method('getRepository')->willReturn($this->mockEntityRepository);
          $this->mockEntityRepository->method('createQueryBuilder')->willReturn($this->mockQueryBuilder);
          $this->mockQueryBuilder->method('select')->willReturn($this->mockQueryBuilder);

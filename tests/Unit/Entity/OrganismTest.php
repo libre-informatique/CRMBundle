@@ -66,11 +66,11 @@ class OrganismTest extends TestCase
         // init
         $id = 'id';
         $this->object->setId($id);
-       // test methods
+        // test methods
         $clone = clone $this->object;
         $this->assertNull($clone->getId());
         $this->assertInstanceOf(ArrayCollection::class, $clone->getPositions());
-       //test object
+        //test object
         $this->assertEquals($id, $this->object->getId());
     }
 
