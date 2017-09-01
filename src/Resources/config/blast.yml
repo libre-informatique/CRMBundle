@@ -417,7 +417,7 @@ parameters:
                 add:
                     fulltextName:
                         type: doctrine_orm_callback
-                        callback: [Librinfo\CRMBundle\Admin\OrganismAdmin, filterNameCallback]
+                        callbackService: [librinfo.crm.filters.customer, filterNameCallback, callback]
                     active: ~
                     isIndividual: ~
                     # firstname: ~
