@@ -12,6 +12,8 @@
 
 namespace Librinfo\CRMBundle\Services\Filters;
 
+use Sonata\AdminBundle\Form\Type\Filter\ChoiceType;
+
 class OrganismFilter
 {
     public function filterOnFullname($queryBuilder, $alias, $field, $value)
@@ -20,13 +22,34 @@ class OrganismFilter
             return;
         }
 
-        $queryBuilder->andWhere(
-            $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->like('customer.firstname', ':value'),
-                $queryBuilder->expr()->like('customer.lastname', ':value'),
-                $queryBuilder->expr()->like('customer.name', ':value')
-            )
-        );
+        if (!isset($value['type'])) {
+            $value['type'] = ChoiceType::TYPE_CONTAINS;
+        }
+
+        switch ($value['type']) {
+            case ChoiceType::TYPE_CONTAINS:
+            default:
+                $queryBuilder->andWhere(
+                    $queryBuilder->expr()->orX(
+                        $queryBuilder->expr()->like('customer.firstname', ':value'),
+                        $queryBuilder->expr()->like('customer.lastname', ':value'),
+                        $queryBuilder->expr()->like('customer.name', ':value')
+                    )
+                );
+                break;
+            case ChoiceType::TYPE_NOT_CONTAINS:
+                $queryBuilder->andWhere(
+                    $queryBuilder->expr()->not(
+                        $queryBuilder->expr()->orX(
+                            $queryBuilder->expr()->like('customer.firstname', ':value'),
+                            $queryBuilder->expr()->like('customer.lastname', ':value'),
+                            $queryBuilder->expr()->like('customer.name', ':value')
+                        )
+                    )
+                );
+                break;
+        }
+
         $queryBuilder->setParameter('value', '%' . $value['value'] . '%');
 
         return true;
